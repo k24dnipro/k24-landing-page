@@ -27,30 +27,30 @@
   width: 100%;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
-    padding: 0 $spacing-md;
+    padding: 0 16px;
   }
   position: relative;
   z-index: 2;
 }
 
 .main {
-  padding: $spacing-4xl 0 $spacing-3xl;
+  padding: 80px 0 64px;
   border-bottom: 1px solid rgba($color-white, 0.1);
 }
 
 .grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: $spacing-3xl;
+  gap: 64px;
   
   @media (min-width: $breakpoint-sm) and (max-width: #{$breakpoint-lg - 1px}) {
     grid-template-columns: 1fr 1fr;
-    gap: $spacing-2xl;
+    gap: 48px;
   }
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
-    gap: $spacing-xl;
+    gap: 32px;
   }
 }
 
@@ -65,8 +65,8 @@
   align-items: center;
   justify-content: center;
   justify-content: flex-start;
-  gap: $spacing-sm;
-  margin-bottom: $spacing-lg;
+  gap: 8px;
+  margin-bottom: 24px;
   text-decoration: none;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
@@ -97,7 +97,7 @@
 .brandDescription {
   color: rgba($color-white, 0.8);
   line-height: 1.7;
-  margin-bottom: $spacing-xl;
+  margin-bottom: 32px;
   max-width: 400px;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
@@ -109,7 +109,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-md;
+  gap: 16px;
   justify-content: flex-start;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
@@ -154,7 +154,7 @@
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
   color: $color-white;
-  margin-bottom: $spacing-lg;
+  margin-bottom: 24px;
   position: relative;
   
   &::after {
@@ -177,7 +177,7 @@
   list-style: none;
   
   li {
-    margin-bottom: $spacing-sm;
+    margin-bottom: 8px;
     
     &:last-child {
       margin-bottom: 0;
@@ -193,7 +193,7 @@
   
   &:hover {
     color: $color-primary;
-    padding-left: $spacing-sm;
+    padding-left: 8px;
   }
 }
 
@@ -202,8 +202,8 @@
   align-items: center;
   justify-content: center;
   justify-content: flex-start;
-  gap: $spacing-sm;
-  margin-bottom: $spacing-md;
+  gap: 8px;
+  margin-bottom: 16px;
   color: rgba($color-white, 0.8);
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
@@ -237,8 +237,8 @@
 }
 
 .workingHours {
-  margin-top: $spacing-lg;
-  padding: $spacing-md;
+  margin-top: 24px;
+  padding: 16px;
   background: rgba($color-primary, 0.1);
   border-radius: $border-radius-lg;
   border: 1px solid rgba($color-primary, 0.2);
@@ -247,7 +247,7 @@
     font-size: $font-size-sm;
     font-weight: $font-weight-semibold;
     color: $color-primary;
-    margin-bottom: $spacing-sm;
+    margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
@@ -255,7 +255,7 @@
   .hoursItem {
     color: rgba($color-white, 0.8);
     font-size: $font-size-sm;
-    margin-bottom: $spacing-xs;
+    margin-bottom: 4px;
     
     &:last-child {
       margin-bottom: 0;
@@ -264,7 +264,7 @@
 }
 
 .bottom {
-  padding: $spacing-xl 0;
+  padding: 32px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -273,7 +273,7 @@
   @media (max-width: #{$breakpoint-sm - 1px}) {
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: 16px;
     text-align: center;
   }
 }
@@ -287,12 +287,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-lg;
+  gap: 24px;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
+    gap: 8px;
   }
 }
 
@@ -309,8 +309,8 @@
 
 .backToTop {
   position: fixed;
-  bottom: $spacing-xl;
-  right: $spacing-xl;
+  bottom: 32px;
+  right: 32px;
   width: 50px;
   height: 50px;
   background: $color-primary;
@@ -345,8 +345,8 @@
   }
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
-    bottom: $spacing-lg;
-    right: $spacing-lg;
+    bottom: 24px;
+    right: 24px;
     width: 45px;
     height: 45px;
     

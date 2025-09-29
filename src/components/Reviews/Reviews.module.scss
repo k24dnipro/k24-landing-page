@@ -31,19 +31,19 @@
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: $spacing-xl;
-  margin-bottom: $spacing-4xl;
+  gap: 32px;
+  margin-bottom: 80px;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: repeat(2, 1fr);
-    gap: $spacing-lg;
-    margin-bottom: $spacing-3xl;
+    gap: 24px;
+    margin-bottom: 64px;
   }
 }
 
 .stat {
   text-align: center;
-  padding: $spacing-lg;
+  padding: 24px;
   background: rgba($color-white, 0.05);
   border: 1px solid rgba($color-primary, 0.2);
   border-radius: $border-radius-xl;
@@ -59,7 +59,7 @@
   .statIcon {
     width: 40px;
     height: 40px;
-    margin: 0 auto $spacing-md;
+    margin: 0 auto 16px;
     background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
     border-radius: 50%;
     display: flex;
@@ -73,7 +73,7 @@
     font-size: clamp(2rem, 3vw, 2.5rem);
     font-weight: $font-weight-extrabold;
     color: $color-primary;
-    margin-bottom: $spacing-sm;
+    margin-bottom: 8px;
     display: block;
   }
   
@@ -87,12 +87,12 @@
 .reviewsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: $spacing-xl;
-  margin-bottom: $spacing-3xl;
+  gap: 32px;
+  margin-bottom: 64px;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
-    gap: $spacing-lg;
+    gap: 24px;
   }
 }
 
@@ -100,7 +100,7 @@
   background: rgba($color-white, 0.05);
   border: 1px solid rgba($color-primary, 0.15);
   border-radius: $border-radius-2xl;
-  padding: $spacing-xl;
+  padding: 32px;
   backdrop-filter: blur(10px);
   transition: all $transition-base;
   position: relative;
@@ -123,7 +123,7 @@
       transform: translateX(-50%);
       background: $color-primary;
       color: $color-secondary;
-      padding: $spacing-xs $spacing-md;
+      padding: 4px 16px;
       font-size: $font-size-xs;
       font-weight: $font-weight-bold;
       border-radius: $border-radius-md;
@@ -136,7 +136,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: $spacing-lg;
+  margin-bottom: 24px;
   align-items: flex-start;
 }
 
@@ -144,7 +144,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-md;
+  gap: 16px;
   flex: 1;
   
   .avatar {
@@ -168,7 +168,7 @@
       font-size: $font-size-lg;
       font-weight: $font-weight-semibold;
       color: $color-white;
-      margin-bottom: $spacing-xs;
+      margin-bottom: 4px;
     }
     
     .reviewDate {
@@ -182,7 +182,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-xs;
+  gap: 4px;
   
   .star {
     width: 18px;
@@ -199,7 +199,7 @@
   color: $color-primary;
   font-size: $font-size-sm;
   font-weight: $font-weight-medium;
-  margin-bottom: $spacing-md;
+  margin-bottom: 16px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -233,21 +233,21 @@
 
 .ctaSection {
   text-align: center;
-  padding: $spacing-3xl;
+  padding: 64px;
   background: rgba($color-primary, 0.1);
   border-radius: $border-radius-2xl;
   border: 2px solid rgba($color-primary, 0.3);
   backdrop-filter: blur(10px);
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
-    padding: $spacing-2xl;
+    padding: 48px;
   }
 }
 
 .ctaIcon {
   width: 60px;
   height: 60px;
-  margin: 0 auto $spacing-lg;
+  margin: 0 auto 24px;
   background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
   border-radius: 50%;
   display: flex;
@@ -261,13 +261,13 @@
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: $font-weight-extrabold;
   color: $color-white;
-  margin-bottom: $spacing-md;
+  margin-bottom: 16px;
 }
 
 .ctaDescription {
   color: rgba($color-white, 0.8);
   font-size: $font-size-lg;
-  margin-bottom: $spacing-2xl;
+  margin-bottom: 48px;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -278,12 +278,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-lg;
+  gap: 24px;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: 16px;
   }
 }
 
@@ -291,13 +291,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-lg;
-  margin-top: $spacing-xl;
+  gap: 24px;
+  margin-top: 32px;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: 16px;
   }
 }
 
@@ -305,11 +305,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-sm;
+  gap: 8px;
   color: rgba($color-white, 0.7);
   text-decoration: none;
   transition: all $transition-base;
-  padding: $spacing-sm $spacing-lg;
+  padding: 8px 24px;
   border-radius: $border-radius-md;
   border: 1px solid rgba($color-white, 0.2);
   

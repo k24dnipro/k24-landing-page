@@ -19,7 +19,7 @@
 .container {
   max-width: $container-max-width;
   margin: 0 auto;
-  padding: $spacing-md $container-padding;
+  padding: 16px 24px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -28,7 +28,7 @@
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     min-height: 60px;
-    padding: $spacing-sm $spacing-md;
+    padding: 8px 16px;
   }
 }
 
@@ -41,7 +41,7 @@
   font-weight: $font-weight-extrabold;
   color: $color-primary;
   text-decoration: none;
-  gap: $spacing-sm;
+  gap: 8px;
   
   &:hover {
     transform: scale(1.02);
@@ -49,7 +49,7 @@
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     font-size: $font-size-xl;
-    gap: $spacing-xs;
+    gap: 4px;
   }
   
   .logoIcon {
@@ -76,7 +76,7 @@
   @media (min-width: $breakpoint-lg) {
     display: flex;
     align-items: center;
-    gap: $spacing-xl;
+    gap: 32px;
   }
   
   @media (max-width: #{$breakpoint-lg - 1px}) {
@@ -88,7 +88,7 @@
   color: $color-white;
   font-weight: $font-weight-medium;
   font-size: $font-size-base;
-  padding: $spacing-sm $spacing-md;
+  padding: 8px 16px;
   border-radius: $border-radius-md;
   transition: all $transition-base;
   position: relative;
@@ -124,7 +124,7 @@
   border: none;
   color: $color-white;
   font-size: $font-size-xl;
-  padding: $spacing-sm;
+  padding: 8px;
   cursor: pointer;
   transition: color $transition-base;
   
@@ -173,7 +173,7 @@
   background-color: rgba($color-secondary, 0.98);
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba($color-primary, 0.2);
-  padding: $spacing-lg 0;
+  padding: 24px 0;
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
@@ -192,11 +192,11 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: $spacing-md;
+    gap: 16px;
     list-style: none;
     
     @media (max-width: #{$breakpoint-sm - 1px}) {
-      padding: 0 $spacing-md;
+      padding: 0 16px;
     }
   }
   
@@ -204,7 +204,7 @@
     color: $color-white;
     font-weight: $font-weight-medium;
     font-size: $font-size-lg;
-    padding: $spacing-md;
+    padding: 16px;
     border-radius: $border-radius-md;
     transition: all $transition-base;
     text-align: center;
@@ -221,7 +221,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-lg;
+  gap: 24px;
   
   @media (max-width: #{$breakpoint-lg - 1px}) {
     display: none;
@@ -232,7 +232,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-sm;
+  gap: 8px;
   color: $color-white;
   font-weight: $font-weight-medium;
   font-size: $font-size-base;
@@ -253,7 +253,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: $spacing-sm $spacing-lg;
+  padding: 8px 24px;
   border: none;
   border-radius: $border-radius-md;
   font-family: $font-family-primary;

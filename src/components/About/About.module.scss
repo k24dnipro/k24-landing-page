@@ -8,12 +8,12 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $spacing-4xl;
+  gap: 80px;
   align-items: center;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
-    gap: $spacing-3xl;
+    gap: 64px;
   }
 }
 
@@ -27,7 +27,7 @@
   color: $color-primary;
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
-  margin-bottom: $spacing-md;
+  margin-bottom: 16px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -36,7 +36,7 @@
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: $font-weight-extrabold;
   line-height: 1.2;
-  margin-bottom: $spacing-xl;
+  margin-bottom: 32px;
   color: $color-secondary;
 }
 
@@ -44,24 +44,24 @@
   font-size: $font-size-lg;
   line-height: 1.7;
   color: $color-gray-dark;
-  margin-bottom: $spacing-2xl;
+  margin-bottom: 48px;
 }
 
 .stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: $spacing-xl;
-  margin-bottom: $spacing-2xl;
+  gap: 32px;
+  margin-bottom: 48px;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
-    gap: $spacing-lg;
+    gap: 24px;
   }
 }
 
 .stat {
   text-align: center;
-  padding: $spacing-lg;
+  padding: 24px;
   background: linear-gradient(135deg, rgba($color-primary, 0.05) 0%, rgba($color-primary, 0.1) 100%);
   border-radius: $border-radius-xl;
   border: 2px solid rgba($color-primary, 0.1);
@@ -77,7 +77,7 @@
     font-size: clamp(2rem, 3vw, 2.5rem);
     font-weight: $font-weight-extrabold;
     color: $color-primary;
-    margin-bottom: $spacing-sm;
+    margin-bottom: 8px;
     display: block;
   }
   
@@ -91,14 +91,14 @@
 .features {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $spacing-lg;
+  gap: 24px;
 }
 
 .feature {
   display: flex;
   align-items: flex-start;
-  gap: $spacing-md;
-  padding: $spacing-lg;
+  gap: 16px;
+  padding: 24px;
   background: $color-white;
   border-radius: $border-radius-lg;
   box-shadow: $shadow-sm;
@@ -125,7 +125,7 @@
       font-size: $font-size-lg;
       font-weight: $font-weight-semibold;
       color: $color-secondary;
-      margin-bottom: $spacing-sm;
+      margin-bottom: 8px;
     }
     
     .featureDescription {
@@ -148,12 +148,12 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: $spacing-lg;
+  gap: 24px;
   height: 500px;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     height: 300px;
-    gap: $spacing-md;
+    gap: 16px;
   }
 }
 
@@ -198,11 +198,11 @@
 
 .badge {
   position: absolute;
-  top: $spacing-lg;
-  right: $spacing-lg;
+  top: 24px;
+  right: 24px;
   background: rgba($color-secondary, 0.9);
   color: $color-primary;
-  padding: $spacing-sm $spacing-lg;
+  padding: 8px 24px;
   border-radius: $border-radius-2xl;
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
