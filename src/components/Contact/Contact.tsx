@@ -118,7 +118,7 @@ export default function Contact() {
           </div>
           <h3 className={styles.successTitle}>Дякуємо за звернення!</h3>
           <p className={styles.successText}>
-            Ваша заявка успішно відправлена. Наш менеджер зв'яжеться з вами найближчим часом 
+            Ваша заявка успішно відправлена. Наш менеджер зв&apos;яжеться з вами найближчим часом 
             для уточнення деталей та призначення зустрічі.
           </p>
           <Button 
@@ -246,13 +246,13 @@ export default function Contact() {
           <form className={styles.form} onSubmit={handleSubmit}>
             <h3 className={styles.formTitle}>Записатися на ремонт</h3>
             <p className={styles.formDescription}>
-              Заповніть форму, і наш менеджер зв'яжеться з вами протягом 15 хвилин
+              Заповніть форму, і наш менеджер зв&apos;яжеться з вами протягом 15 хвилин
             </p>
 
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label htmlFor="name" className={styles.formLabel}>
-                  Ім'я *
+                  Ім&apos;я *
                 </label>
                 <input
                   type="text"
@@ -286,7 +286,7 @@ export default function Contact() {
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <label htmlFor="email" className={styles.formLabel}>
-                  Email (необов'язково)
+                  Email (необов&apos;язково)
                 </label>
                 <input
                   type="email"
@@ -323,7 +323,7 @@ export default function Contact() {
 
             <div className={styles.formGroup}>
               <label htmlFor="message" className={styles.formLabel}>
-                Додаткова інформація (необов'язково)
+                Додаткова інформація (необов&apos;язково)
               </label>
               <textarea
                 id="message"

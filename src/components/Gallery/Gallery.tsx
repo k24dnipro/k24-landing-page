@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Section from '@/components/Section/Section';
 import Button from '@/components/Button/Button';
 import { GalleryImage } from '@/types';
