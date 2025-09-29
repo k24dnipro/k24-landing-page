@@ -1,0 +1,212 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.about {
+  position: relative;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-4xl;
+  align-items: center;
+  
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-3xl;
+  }
+}
+
+.content {
+  @include mobile {
+    order: 2;
+  }
+}
+
+.subtitle {
+  color: $color-primary;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-md;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: $font-weight-extrabold;
+  line-height: 1.2;
+  margin-bottom: $spacing-xl;
+  color: $color-secondary;
+}
+
+.description {
+  font-size: $font-size-lg;
+  line-height: 1.7;
+  color: $color-gray-dark;
+  margin-bottom: $spacing-2xl;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+  
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+}
+
+.stat {
+  text-align: center;
+  padding: $spacing-lg;
+  background: linear-gradient(135deg, rgba($color-primary, 0.05) 0%, rgba($color-primary, 0.1) 100%);
+  border-radius: $border-radius-xl;
+  border: 2px solid rgba($color-primary, 0.1);
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba($color-primary, 0.3);
+    box-shadow: $shadow-lg;
+  }
+  
+  .statNumber {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: $font-weight-extrabold;
+    color: $color-primary;
+    margin-bottom: $spacing-sm;
+    display: block;
+  }
+  
+  .statLabel {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-gray-dark;
+  }
+}
+
+.features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  background: $color-white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  border-left: 4px solid $color-primary;
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: translateX(8px);
+    box-shadow: $shadow-md;
+  }
+  
+  .featureIcon {
+    width: 24px;
+    height: 24px;
+    color: $color-primary;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .featureContent {
+    flex: 1;
+    
+    .featureTitle {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $color-secondary;
+      margin-bottom: $spacing-sm;
+    }
+    
+    .featureDescription {
+      font-size: $font-size-base;
+      color: $color-gray-dark;
+      line-height: 1.6;
+    }
+  }
+}
+
+.imageContainer {
+  position: relative;
+  
+  @include mobile {
+    order: 1;
+  }
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: $spacing-lg;
+  height: 500px;
+  
+  @include mobile {
+    height: 300px;
+    gap: $spacing-md;
+  }
+}
+
+.image {
+  border-radius: $border-radius-xl;
+  overflow: hidden;
+  position: relative;
+  background-color: $color-gray-light;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba($color-primary, 0.2) 0%, transparent 100%);
+    z-index: 2;
+    opacity: 0;
+    transition: opacity $transition-base;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $transition-slow;
+  }
+  
+  &:hover img {
+    transform: scale(1.05);
+  }
+  
+  &.large {
+    grid-row: span 2;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: $spacing-lg;
+  right: $spacing-lg;
+  background: rgba($color-secondary, 0.9);
+  color: $color-primary;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-2xl;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  backdrop-filter: blur(10px);
+  z-index: 3;
+}

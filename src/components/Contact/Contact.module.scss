@@ -1,0 +1,325 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.contact {
+  position: relative;
+  background: linear-gradient(135deg, $color-gray-light 0%, $color-white 100%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-4xl;
+  
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-3xl;
+  }
+}
+
+.contactInfo {
+  @include mobile {
+    order: 2;
+  }
+}
+
+.infoCards {
+  display: grid;
+  gap: $spacing-xl;
+  margin-bottom: $spacing-2xl;
+}
+
+.infoCard {
+  @include card;
+  @include flex-center;
+  align-items: flex-start;
+  gap: $spacing-lg;
+  padding: $spacing-xl;
+  border-left: 4px solid $color-primary;
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: translateX(8px);
+    box-shadow: $shadow-xl;
+  }
+  
+  .cardIcon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+    border-radius: 50%;
+    @include flex-center;
+    color: $color-secondary;
+    font-size: $font-size-xl;
+    flex-shrink: 0;
+  }
+  
+  .cardContent {
+    flex: 1;
+    
+    .cardTitle {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $color-secondary;
+      margin-bottom: $spacing-sm;
+    }
+    
+    .cardText {
+      color: $color-gray-dark;
+      line-height: 1.6;
+      margin-bottom: $spacing-sm;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    
+    .cardLink {
+      color: $color-primary;
+      text-decoration: none;
+      font-weight: $font-weight-medium;
+      transition: color $transition-base;
+      
+      &:hover {
+        color: $color-primary-dark;
+      }
+    }
+  }
+}
+
+.socialLinks {
+  @include flex-center;
+  gap: $spacing-lg;
+  margin-top: $spacing-xl;
+  justify-content: flex-start;
+}
+
+.socialLink {
+  width: 50px;
+  height: 50px;
+  background: $color-white;
+  border: 2px solid $color-gray;
+  border-radius: 50%;
+  @include flex-center;
+  color: $color-gray-dark;
+  text-decoration: none;
+  transition: all $transition-base;
+  
+  &:hover {
+    border-color: $color-primary;
+    background: $color-primary;
+    color: $color-secondary;
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+  
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.formContainer {
+  @include mobile {
+    order: 1;
+  }
+}
+
+.form {
+  @include card;
+  padding: $spacing-2xl;
+  background: $color-white;
+  border: 2px solid rgba($color-primary, 0.1);
+  
+  &:hover {
+    border-color: rgba($color-primary, 0.3);
+    transform: none;
+  }
+}
+
+.formTitle {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-secondary;
+  margin-bottom: $spacing-md;
+  text-align: center;
+}
+
+.formDescription {
+  color: $color-gray-dark;
+  text-align: center;
+  margin-bottom: $spacing-2xl;
+  line-height: 1.6;
+}
+
+.formGroup {
+  margin-bottom: $spacing-lg;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.formLabel {
+  display: block;
+  font-weight: $font-weight-medium;
+  color: $color-secondary;
+  margin-bottom: $spacing-sm;
+  font-size: $font-size-sm;
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+  @include input-base;
+  
+  &:focus {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+  }
+  
+  &.error {
+    border-color: #dc2626;
+    
+    &:focus {
+      border-color: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
+  }
+}
+
+.formTextarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: $font-family-primary;
+}
+
+.formSelect {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+  appearance: none;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg;
+  
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.errorMessage {
+  color: #dc2626;
+  font-size: $font-size-xs;
+  margin-top: $spacing-xs;
+}
+
+.submitButton {
+  width: 100%;
+  padding: $spacing-lg;
+  font-size: $font-size-lg;
+  margin-top: $spacing-lg;
+}
+
+.successMessage {
+  @include card;
+  background: linear-gradient(135deg, rgba($color-primary, 0.1) 0%, rgba($color-primary, 0.05) 100%);
+  border: 2px solid rgba($color-primary, 0.3);
+  text-align: center;
+  padding: $spacing-2xl;
+  
+  .successIcon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto $spacing-lg;
+    background: $color-primary;
+    border-radius: 50%;
+    @include flex-center;
+    color: $color-secondary;
+  }
+  
+  .successTitle {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-secondary;
+    margin-bottom: $spacing-md;
+  }
+  
+  .successText {
+    color: $color-gray-dark;
+    line-height: 1.6;
+  }
+}
+
+.emergencySection {
+  margin-top: $spacing-4xl;
+  padding: $spacing-2xl;
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(220, 38, 38, 0.05) 100%);
+  border: 2px solid rgba(220, 38, 38, 0.2);
+  border-radius: $border-radius-2xl;
+  text-align: center;
+  
+  .emergencyIcon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto $spacing-md;
+    background: #dc2626;
+    border-radius: 50%;
+    @include flex-center;
+    color: $color-white;
+    font-size: $font-size-xl;
+  }
+  
+  .emergencyTitle {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: #dc2626;
+    margin-bottom: $spacing-sm;
+  }
+  
+  .emergencyText {
+    color: $color-gray-dark;
+    margin-bottom: $spacing-lg;
+    line-height: 1.6;
+  }
+  
+  .emergencyButton {
+    background: #dc2626;
+    border-color: #dc2626;
+    
+    &:hover {
+      background: #b91c1c;
+      border-color: #b91c1c;
+    }
+  }
+}
+
+.mapSection {
+  margin-top: $spacing-4xl;
+  
+  .mapTitle {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-secondary;
+    margin-bottom: $spacing-lg;
+    text-align: center;
+  }
+  
+  .mapContainer {
+    @include card;
+    padding: 0;
+    overflow: hidden;
+    height: 300px;
+    background: linear-gradient(135deg, $color-gray 0%, $color-gray-dark 100%);
+    @include flex-center;
+    color: $color-white;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+  }
+}

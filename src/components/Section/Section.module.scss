@@ -1,0 +1,57 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  @include section-spacing;
+  position: relative;
+  
+  &.dark {
+    background-color: $color-secondary;
+    color: $color-white;
+  }
+  
+  &.light {
+    background-color: $color-white;
+    color: $color-secondary;
+  }
+  
+  &.gray {
+    background-color: $color-gray-light;
+    color: $color-secondary;
+  }
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-4xl;
+  
+  @include mobile {
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: $font-weight-extrabold;
+  margin-bottom: $spacing-md;
+  
+  &.gradient {
+    @include gradient-text;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-lg;
+  color: $color-gray;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  
+  .dark & {
+    color: rgba($color-white, 0.8);
+  }
+}

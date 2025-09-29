@@ -1,0 +1,329 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.reviews {
+  background: linear-gradient(135deg, 
+    rgba($color-secondary, 0.95) 0%, 
+    rgba($color-secondary, 0.98) 50%,
+    rgba($color-secondary, 0.95) 100%
+  );
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 30% 70%, rgba($color-primary, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 70% 30%, rgba($color-primary, 0.06) 0%, transparent 50%);
+    z-index: 1;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-xl;
+  margin-bottom: $spacing-4xl;
+  
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-lg;
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+.stat {
+  text-align: center;
+  padding: $spacing-lg;
+  background: rgba($color-white, 0.05);
+  border: 1px solid rgba($color-primary, 0.2);
+  border-radius: $border-radius-xl;
+  backdrop-filter: blur(10px);
+  transition: all $transition-base;
+  
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba($color-primary, 0.4);
+    background: rgba($color-white, 0.1);
+  }
+  
+  .statIcon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto $spacing-md;
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+    border-radius: 50%;
+    @include flex-center;
+    color: $color-secondary;
+    font-size: $font-size-lg;
+  }
+  
+  .statNumber {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: $font-weight-extrabold;
+    color: $color-primary;
+    margin-bottom: $spacing-sm;
+    display: block;
+  }
+  
+  .statLabel {
+    color: rgba($color-white, 0.8);
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+  }
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: $spacing-xl;
+  margin-bottom: $spacing-3xl;
+  
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+  }
+}
+
+.reviewCard {
+  background: rgba($color-white, 0.05);
+  border: 1px solid rgba($color-primary, 0.15);
+  border-radius: $border-radius-2xl;
+  padding: $spacing-xl;
+  backdrop-filter: blur(10px);
+  transition: all $transition-base;
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-8px);
+    border-color: rgba($color-primary, 0.3);
+    box-shadow: 0 20px 40px rgba($color-primary, 0.15);
+  }
+  
+  &.featured {
+    border: 2px solid $color-primary;
+    background: rgba($color-primary, 0.1);
+    
+    &::before {
+      content: 'РЕКОМЕНДОВАНИЙ ВІДГУК';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $color-primary;
+      color: $color-secondary;
+      padding: $spacing-xs $spacing-md;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-bold;
+      border-radius: $border-radius-md;
+      white-space: nowrap;
+    }
+  }
+}
+
+.reviewHeader {
+  @include flex-between;
+  margin-bottom: $spacing-lg;
+  align-items: flex-start;
+}
+
+.reviewAuthor {
+  @include flex-center;
+  gap: $spacing-md;
+  flex: 1;
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+    border-radius: 50%;
+    @include flex-center;
+    color: $color-secondary;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-lg;
+    flex-shrink: 0;
+  }
+  
+  .authorInfo {
+    flex: 1;
+    
+    .authorName {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $color-white;
+      margin-bottom: $spacing-xs;
+    }
+    
+    .reviewDate {
+      font-size: $font-size-sm;
+      color: rgba($color-white, 0.6);
+    }
+  }
+}
+
+.rating {
+  @include flex-center;
+  gap: $spacing-xs;
+  
+  .star {
+    width: 18px;
+    height: 18px;
+    color: $color-primary;
+  }
+  
+  .emptyStar {
+    color: rgba($color-white, 0.3);
+  }
+}
+
+.reviewService {
+  color: $color-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  margin-bottom: $spacing-md;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.reviewComment {
+  color: rgba($color-white, 0.9);
+  line-height: 1.7;
+  font-size: $font-size-base;
+  position: relative;
+  
+  &::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 3rem;
+    color: rgba($color-primary, 0.3);
+    font-family: serif;
+  }
+  
+  &::after {
+    content: '"';
+    position: absolute;
+    bottom: -20px;
+    right: -5px;
+    font-size: 3rem;
+    color: rgba($color-primary, 0.3);
+    font-family: serif;
+  }
+}
+
+.ctaSection {
+  text-align: center;
+  padding: $spacing-3xl;
+  background: rgba($color-primary, 0.1);
+  border-radius: $border-radius-2xl;
+  border: 2px solid rgba($color-primary, 0.3);
+  backdrop-filter: blur(10px);
+  
+  @include mobile {
+    padding: $spacing-2xl;
+  }
+}
+
+.ctaIcon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto $spacing-lg;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: 50%;
+  @include flex-center;
+  color: $color-secondary;
+  font-size: $font-size-2xl;
+}
+
+.ctaTitle {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: $font-weight-extrabold;
+  color: $color-white;
+  margin-bottom: $spacing-md;
+}
+
+.ctaDescription {
+  color: rgba($color-white, 0.8);
+  font-size: $font-size-lg;
+  margin-bottom: $spacing-2xl;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.ctaActions {
+  @include flex-center;
+  gap: $spacing-lg;
+  
+  @include mobile {
+    @include flex-column;
+    gap: $spacing-md;
+  }
+}
+
+.platformLinks {
+  @include flex-center;
+  gap: $spacing-lg;
+  margin-top: $spacing-xl;
+  
+  @include mobile {
+    @include flex-column;
+    gap: $spacing-md;
+  }
+}
+
+.platformLink {
+  @include flex-center;
+  gap: $spacing-sm;
+  color: rgba($color-white, 0.7);
+  text-decoration: none;
+  transition: all $transition-base;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  border: 1px solid rgba($color-white, 0.2);
+  
+  &:hover {
+    color: $color-primary;
+    border-color: rgba($color-primary, 0.5);
+    background: rgba($color-primary, 0.1);
+  }
+  
+  .platformIcon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Animation for review cards
+.reviewCard {
+  animation: slideInUp 0.8s ease forwards;
+  
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.15}s;
+    }
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
