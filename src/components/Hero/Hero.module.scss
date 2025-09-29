@@ -1,5 +1,4 @@
 @use "../../styles/variables" as *;
-@use "../../styles/mixins" as *;
 
 .hero {
   position: relative;
@@ -7,7 +6,9 @@
   width: 100%;
   margin-top: -70px; /* Offset the body padding to make hero full height */
   padding-top: 70px; /* Add padding to account for header */
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(
     135deg,
     $color-secondary 0%,
@@ -15,7 +16,7 @@
   );
   overflow: hidden;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     margin-top: -60px; /* Offset the body padding for mobile */
     padding-top: 60px; /* Add padding to account for mobile header */
   }
@@ -48,11 +49,18 @@
 }
 
 .container {
-  @include container;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  width: 100%;
   position: relative;
   z-index: 3;
   text-align: center;
   color: $color-white;
+  
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    padding: 0 $spacing-md;
+  }
 }
 
 .content {
@@ -102,12 +110,15 @@
 }
 
 .actions {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-lg;
   margin-bottom: $spacing-3xl;
 
-  @include mobile {
-    @include flex-column;
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    display: flex;
+    flex-direction: column;
     gap: $spacing-md;
   }
 }
@@ -118,14 +129,16 @@
   gap: $spacing-xl;
   margin-top: $spacing-4xl;
 
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
     gap: $spacing-lg;
   }
 }
 
 .feature {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-md;
   padding: $spacing-lg;
   background: rgba($color-white, 0.05);
@@ -147,7 +160,7 @@
   color: $color-white;
   text-align: left;
 
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     text-align: center;
   }
 }
@@ -157,7 +170,8 @@
   bottom: $spacing-xl;
   left: 50%;
   transform: translateX(-50%);
-  @include flex-column;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: $spacing-sm;
   color: rgba($color-white, 0.7);

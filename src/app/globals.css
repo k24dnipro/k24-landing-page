@@ -1,12 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
   /* Colors */
-  --color-primary: #ffcd01;
-  --color-primary-light: #fff347;
+  --color-primary: #FFED00;
+  --color-primary-light: #FFF347;
   --color-primary-light-lighter: #fff89a;
   --color-primary-light-darker: #e6d500;
-  --color-primary-dark: #e6d500;
+  --color-primary-dark: #E6D500;
   --color-primary-dark-lighter: #f0e000;
   --color-primary-dark-darker: #ccb700;
   --color-secondary: #000000;

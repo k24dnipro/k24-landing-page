@@ -1,17 +1,18 @@
 @use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
 
 .gallery {
   position: relative;
 }
 
 .filters {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-md;
   margin-bottom: $spacing-3xl;
   flex-wrap: wrap;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     gap: $spacing-sm;
     margin-bottom: $spacing-2xl;
   }
@@ -49,14 +50,18 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: $spacing-xl;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
     gap: $spacing-lg;
   }
 }
 
 .galleryItem {
-  @include card;
+  background-color: $color-white;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-md;
+  padding: $spacing-xl;
+  transition: all $transition-base;
   padding: 0;
   overflow: hidden;
   cursor: pointer;
@@ -72,7 +77,7 @@
   height: 250px;
   overflow: hidden;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     height: 200px;
   }
 }
@@ -140,7 +145,9 @@
   top: $spacing-md;
   left: $spacing-md;
   right: $spacing-md;
-  @include flex-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   z-index: 5;
 }
 
@@ -194,7 +201,9 @@
   right: 0;
   bottom: 0;
   background: rgba($color-secondary, 0.95);
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: $z-modal;
   opacity: 0;
   visibility: hidden;
@@ -255,7 +264,9 @@
   color: $color-white;
   border: none;
   border-radius: 50%;
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: all $transition-base;
   

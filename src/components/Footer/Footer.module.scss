@@ -1,5 +1,4 @@
 @use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
 
 .footer {
   background: linear-gradient(135deg, $color-secondary 0%, rgba($color-secondary, 0.95) 100%);
@@ -22,7 +21,14 @@
 }
 
 .container {
-  @include container;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  width: 100%;
+  
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    padding: 0 $spacing-md;
+  }
   position: relative;
   z-index: 2;
 }
@@ -37,31 +43,33 @@
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: $spacing-3xl;
   
-  @include tablet {
+  @media (min-width: $breakpoint-sm) and (max-width: #{$breakpoint-lg - 1px}) {
     grid-template-columns: 1fr 1fr;
     gap: $spacing-2xl;
   }
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
     gap: $spacing-xl;
   }
 }
 
 .brand {
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     text-align: center;
   }
 }
 
 .logo {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   justify-content: flex-start;
   gap: $spacing-sm;
   margin-bottom: $spacing-lg;
   text-decoration: none;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     justify-content: center;
   }
   
@@ -70,7 +78,9 @@
     height: 50px;
     background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
     border-radius: $border-radius-lg;
-    @include flex-center;
+    display: flex;
+  align-items: center;
+  justify-content: center;
     color: $color-secondary;
     font-weight: $font-weight-extrabold;
     font-size: $font-size-xl;
@@ -90,17 +100,19 @@
   margin-bottom: $spacing-xl;
   max-width: 400px;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     max-width: none;
   }
 }
 
 .socialLinks {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-md;
   justify-content: flex-start;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     justify-content: center;
   }
 }
@@ -111,7 +123,9 @@
   background: rgba($color-white, 0.1);
   border: 1px solid rgba($color-white, 0.2);
   border-radius: 50%;
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: rgba($color-white, 0.8);
   text-decoration: none;
   transition: all $transition-base;
@@ -131,7 +145,7 @@
 }
 
 .column {
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     text-align: center;
   }
 }
@@ -152,7 +166,7 @@
     height: 2px;
     background: $color-primary;
     
-    @include mobile {
+    @media (max-width: #{$breakpoint-sm - 1px}) {
       left: 50%;
       transform: translateX(-50%);
     }
@@ -184,13 +198,15 @@
 }
 
 .contactItem {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   justify-content: flex-start;
   gap: $spacing-sm;
   margin-bottom: $spacing-md;
   color: rgba($color-white, 0.8);
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     justify-content: center;
   }
   
@@ -249,11 +265,14 @@
 
 .bottom {
   padding: $spacing-xl 0;
-  @include flex-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   align-items: center;
   
-  @include mobile {
-    @include flex-column;
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    display: flex;
+    flex-direction: column;
     gap: $spacing-md;
     text-align: center;
   }
@@ -265,11 +284,14 @@
 }
 
 .bottomLinks {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-lg;
   
-  @include mobile {
-    @include flex-column;
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    display: flex;
+    flex-direction: column;
     gap: $spacing-sm;
   }
 }
@@ -295,7 +317,9 @@
   color: $color-secondary;
   border: none;
   border-radius: 50%;
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: all $transition-base;
   z-index: $z-fixed;
@@ -320,7 +344,7 @@
     height: 24px;
   }
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     bottom: $spacing-lg;
     right: $spacing-lg;
     width: 45px;

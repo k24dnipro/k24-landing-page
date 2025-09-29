@@ -1,5 +1,4 @@
 @use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
 
 .about {
   position: relative;
@@ -12,14 +11,14 @@
   gap: $spacing-4xl;
   align-items: center;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
     gap: $spacing-3xl;
   }
 }
 
 .content {
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     order: 2;
   }
 }
@@ -54,7 +53,7 @@
   gap: $spacing-xl;
   margin-bottom: $spacing-2xl;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
     gap: $spacing-lg;
   }
@@ -140,7 +139,7 @@
 .imageContainer {
   position: relative;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     order: 1;
   }
 }
@@ -152,7 +151,7 @@
   gap: $spacing-lg;
   height: 500px;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     height: 300px;
     gap: $spacing-md;
   }

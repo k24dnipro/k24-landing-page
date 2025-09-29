@@ -1,15 +1,54 @@
 @use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
 
 .button {
-  @include button-base;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md $spacing-xl;
+  border: none;
+  border-radius: $border-radius-md;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-semibold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  white-space: nowrap;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
   
   &.primary {
-    @include button-primary;
+    background-color: $color-primary;
+    color: $color-secondary;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-primary-light;
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
   }
   
   &.secondary {
-    @include button-secondary;
+    background-color: transparent;
+    color: $color-primary;
+    border: 2px solid $color-primary;
+    
+    &:hover:not(:disabled) {
+      background-color: $color-primary;
+      color: $color-secondary;
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
   }
   
   &.outline {

@@ -1,5 +1,4 @@
 @use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
 
 .header {
   position: fixed;
@@ -18,21 +17,25 @@
 }
 
 .container {
-  @include container;
-  @include flex-between;
-  padding-top: $spacing-md;
-  padding-bottom: $spacing-md;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $spacing-md $container-padding;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   min-height: 70px;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     min-height: 60px;
-    padding-top: $spacing-sm;
-    padding-bottom: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
   }
 }
 
 .logo {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: $font-family-secondary;
   font-size: $font-size-2xl;
   font-weight: $font-weight-extrabold;
@@ -44,7 +47,7 @@
     transform: scale(1.02);
   }
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     font-size: $font-size-xl;
     gap: $spacing-xs;
   }
@@ -54,12 +57,14 @@
     height: 40px;
     background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
     border-radius: $border-radius-md;
-    @include flex-center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: $font-weight-extrabold;
     color: $color-secondary;
     font-size: $font-size-lg;
     
-    @include mobile {
+    @media (max-width: #{$breakpoint-sm - 1px}) {
       width: 32px;
       height: 32px;
       font-size: $font-size-base;
@@ -68,7 +73,7 @@
 }
 
 .nav {
-  @include desktop {
+  @media (min-width: $breakpoint-lg) {
     display: flex;
     align-items: center;
     gap: $spacing-xl;
@@ -111,7 +116,7 @@
 }
 
 .mobileMenuButton {
-  @include desktop {
+  @media (min-width: $breakpoint-lg) {
     display: none;
   }
   
@@ -181,10 +186,18 @@
   }
   
   .mobileNavList {
-    @include container;
-    @include flex-column;
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 $container-padding;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     gap: $spacing-md;
     list-style: none;
+    
+    @media (max-width: #{$breakpoint-sm - 1px}) {
+      padding: 0 $spacing-md;
+    }
   }
   
   .mobileNavLink {
@@ -205,7 +218,9 @@
 }
 
 .contactInfo {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-lg;
   
   @media (max-width: #{$breakpoint-lg - 1px}) {
@@ -214,7 +229,9 @@
 }
 
 .phone {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-sm;
   color: $color-white;
   font-weight: $font-weight-medium;
@@ -233,9 +250,36 @@
 }
 
 .ctaButton {
-  @include button-primary;
-  font-size: $font-size-sm;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: $spacing-sm $spacing-lg;
+  border: none;
+  border-radius: $border-radius-md;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-semibold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  white-space: nowrap;
+  background-color: $color-primary;
+  color: $color-secondary;
+  font-size: $font-size-sm;
+  
+  &:hover:not(:disabled) {
+    background-color: $color-primary-light;
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
   
   @media (max-width: #{$breakpoint-lg - 1px}) {
     display: none;

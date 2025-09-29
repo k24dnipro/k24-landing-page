@@ -1,5 +1,4 @@
 @use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
 
 .reviews {
   background: linear-gradient(135deg, 
@@ -35,7 +34,7 @@
   gap: $spacing-xl;
   margin-bottom: $spacing-4xl;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: repeat(2, 1fr);
     gap: $spacing-lg;
     margin-bottom: $spacing-3xl;
@@ -63,7 +62,9 @@
     margin: 0 auto $spacing-md;
     background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
     border-radius: 50%;
-    @include flex-center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: $color-secondary;
     font-size: $font-size-lg;
   }
@@ -89,7 +90,7 @@
   gap: $spacing-xl;
   margin-bottom: $spacing-3xl;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
     gap: $spacing-lg;
   }
@@ -132,13 +133,17 @@
 }
 
 .reviewHeader {
-  @include flex-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: $spacing-lg;
   align-items: flex-start;
 }
 
 .reviewAuthor {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-md;
   flex: 1;
   
@@ -147,7 +152,9 @@
     height: 50px;
     background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
     border-radius: 50%;
-    @include flex-center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: $color-secondary;
     font-weight: $font-weight-bold;
     font-size: $font-size-lg;
@@ -172,7 +179,9 @@
 }
 
 .rating {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-xs;
   
   .star {
@@ -230,7 +239,7 @@
   border: 2px solid rgba($color-primary, 0.3);
   backdrop-filter: blur(10px);
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     padding: $spacing-2xl;
   }
 }
@@ -241,7 +250,9 @@
   margin: 0 auto $spacing-lg;
   background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
   border-radius: 50%;
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: $color-secondary;
   font-size: $font-size-2xl;
 }
@@ -264,28 +275,36 @@
 }
 
 .ctaActions {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-lg;
   
-  @include mobile {
-    @include flex-column;
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    display: flex;
+    flex-direction: column;
     gap: $spacing-md;
   }
 }
 
 .platformLinks {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-lg;
   margin-top: $spacing-xl;
   
-  @include mobile {
-    @include flex-column;
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    display: flex;
+    flex-direction: column;
     gap: $spacing-md;
   }
 }
 
 .platformLink {
-  @include flex-center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: $spacing-sm;
   color: rgba($color-white, 0.7);
   text-decoration: none;

@@ -1,9 +1,12 @@
 @use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
 
 .section {
-  @include section-spacing;
+  padding: $spacing-5xl 0;
   position: relative;
+  
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    padding: $spacing-3xl 0;
+  }
   
   &.dark {
     background-color: $color-secondary;
@@ -22,14 +25,21 @@
 }
 
 .container {
-  @include container;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  width: 100%;
+  
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    padding: 0 $spacing-md;
+  }
 }
 
 .header {
   text-align: center;
   margin-bottom: $spacing-4xl;
   
-  @include mobile {
+  @media (max-width: #{$breakpoint-sm - 1px}) {
     margin-bottom: $spacing-3xl;
   }
 }
@@ -40,7 +50,21 @@
   margin-bottom: $spacing-md;
   
   &.gradient {
-    @include gradient-text;
+    background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradient-move 3s ease infinite;
+  }
+}
+
+@keyframes gradient-move {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
 
