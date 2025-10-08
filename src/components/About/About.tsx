@@ -1,12 +1,17 @@
-import Section from "@/components/Section/Section";
-import Button from "@/components/Button/Button";
-import { Users, Wrench, Shield, DollarSign } from "lucide-react";
-import styles from "./About.module.scss";
+import {
+  DollarSign,
+  Shield,
+  Users,
+  Wrench,
+} from 'lucide-react';
+import Image from 'next/image';
+import Section from '@/components/Section/Section';
+import styles from './About.module.scss';
 
 export default function About() {
   const stats = [
-    { number: "15+", label: "Років досвіду" },
-    { number: "5000+", label: "Відремонтованих авто" },
+    { number: "12+", label: "Років досвіду" },
+    { number: "600+", label: "Відремонтованих авто" },
     { number: "98%", label: "Задоволених клієнтів" },
     { number: "24/7", label: "Підтримка клієнтів" },
   ];
@@ -14,27 +19,27 @@ export default function About() {
   const features = [
     {
       icon: <Users />,
-      title: "Професійна команда",
+      title: "Досвідчена команда",
       description:
-        "Наші майстри мають багаторічний досвід та постійно підвищують кваліфікацію на навчаннях від провідних виробників автомобілів.",
+        "Наше СТО у Дніпрі спеціалізується на кузовному ремонті. Майстри з багаторічним досвідом відновлять авто будь-якої складності.",
     },
     {
       icon: <Wrench />,
-      title: "Сучасне обладнання",
+      title: "Професійне обладнання",
       description:
-        "Використовуємо найновіше діагностичне та ремонтне обладнання від провідних світових виробників для точної діагностики.",
+        "Використовуємо сучасні стенди для геометрії кузова, фарбувальні камери та діагностичні системи від провідних брендів.",
     },
     {
       icon: <Shield />,
       title: "Гарантія якості",
       description:
-        "Надаємо офіційну гарантію на всі виконані роботи та встановлені запчастини. Ваша впевненість - наш пріоритет.",
+        "Надаємо гарантію на всі кузовні роботи та запчастини. Контроль якості — обов’язкова частина кожного етапу ремонту.",
     },
     {
       icon: <DollarSign />,
       title: "Прозорі ціни",
       description:
-        "Всі роботи проводимо за фіксованими цінами без прихованих доплат. Детальну кошторисну розробляємо заздалегідь.",
+        "Розраховуємо вартість ремонту заздалегідь. Без прихованих доплат — лише прозора ціна та офіційний кошторис.",
     },
   ];
 
@@ -44,7 +49,7 @@ export default function About() {
         <div className={styles.content}>
           <div className={styles.subtitle}>Про нас</div>
           <h2 className={styles.title}>
-            СТО К24 - ваш надійний партнер у світі автомобілів
+            К24 - ваш надійний партнер у світі автомобілів
           </h2>
           <p className={styles.description}>
             Ми спеціалізуємося на професійному ремонті та обслуговуванні
@@ -60,84 +65,52 @@ export default function About() {
               </div>
             ))}
           </div>
-
-          <div className={styles.features}>
-            {features.map((feature, index) => (
-              <div key={index} className={styles.feature}>
-                <div className={styles.featureIcon}>{feature.icon}</div>
-                <div className={styles.featureContent}>
-                  <h3 className={styles.featureTitle}>{feature.title}</h3>
-                  <p className={styles.featureDescription}>
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <Button variant="primary" size="large" href="#contact">
-            Зв&apos;язатися з нами
-          </Button>
         </div>
 
         <div className={styles.imageContainer}>
           <div className={styles.imageGrid}>
             <div className={`${styles.image} ${styles.large}`}>
-              {/* Placeholder for main garage image */}
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  background: "linear-gradient(135deg, #333 0%, #666 100%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#FFED00",
-                  fontSize: "1.5rem",
-                  fontWeight: "bold",
-                }}
-              >
-                Основний цех
-              </div>
+              <Image
+                src="/images/about-1.jpeg"
+                width={400}
+                height={400}
+                alt="Image"
+              />
             </div>
             <div className={styles.image}>
-              {/* Placeholder for tools image */}
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  background: "linear-gradient(135deg, #444 0%, #777 100%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#FFED00",
-                  fontSize: "1rem",
-                  fontWeight: "bold",
-                }}
-              >
-                Обладнання
-              </div>
+              <Image
+                src="/images/about-2.jpg"
+                width={400}
+                height={400}
+                alt="Image"
+              />
             </div>
             <div className={styles.image}>
-              {/* Placeholder for team image */}
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  background: "linear-gradient(135deg, #555 0%, #888 100%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#FFED00",
-                  fontSize: "1rem",
-                  fontWeight: "bold",
-                }}
-              >
-                Команда
-              </div>
+              <Image
+                src="/images/about-3.jpg"
+                width={400}
+                height={400}
+                alt="Image"
+              />
             </div>
           </div>
-          <div className={styles.badge}>Сертифіковано ISO 9001</div>
+        </div>
+      </div>
+
+      <div className={styles.featuresSection}>
+        <h2 className={styles.featuresTitle}>Чому ми?</h2>
+        <div className={styles.features}>
+          {features.map((feature, index) => (
+            <div key={index} className={styles.feature}>
+              <div className={styles.featureIcon}>{feature.icon}</div>
+              <div className={styles.featureContent}>
+                <h3 className={styles.featureTitle}>{feature.title}</h3>
+                <p className={styles.featureDescription}>
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </Section>

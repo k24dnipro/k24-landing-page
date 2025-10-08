@@ -1,4 +1,4 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .about {
   position: relative;
@@ -8,9 +8,9 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 60px;
   align-items: center;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
     gap: 64px;
@@ -19,7 +19,7 @@
 
 .content {
   @media (max-width: #{$breakpoint-sm - 1px}) {
-    order: 2;
+    order: 1;
   }
 }
 
@@ -50,9 +50,8 @@
 .stats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  margin-bottom: 48px;
-  
+  gap: 24px;
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -61,18 +60,22 @@
 
 .stat {
   text-align: center;
-  padding: 24px;
-  background: linear-gradient(135deg, rgba($color-primary, 0.05) 0%, rgba($color-primary, 0.1) 100%);
+  padding: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba($color-primary, 0.05) 0%,
+    rgba($color-primary, 0.1) 100%
+  );
   border-radius: $border-radius-xl;
   border: 2px solid rgba($color-primary, 0.1);
   transition: all $transition-base;
-  
+
   &:hover {
     transform: translateY(-4px);
     border-color: rgba($color-primary, 0.3);
     box-shadow: $shadow-lg;
   }
-  
+
   .statNumber {
     font-size: clamp(2rem, 3vw, 2.5rem);
     font-weight: $font-weight-extrabold;
@@ -80,7 +83,7 @@
     margin-bottom: 8px;
     display: block;
   }
-  
+
   .statLabel {
     font-size: $font-size-base;
     font-weight: $font-weight-medium;
@@ -88,10 +91,28 @@
   }
 }
 
+.featuresSection {
+  margin-top: 80px;
+
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    margin-top: 64px;
+  }
+}
+
+.featuresTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: $font-weight-extrabold;
+  line-height: 1.2;
+  margin-bottom: 48px;
+  color: $color-secondary;
+  text-align: center;
+}
+
 .features {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-wrap: wrap;
   gap: 24px;
+  width: 100%;
 }
 
 .feature {
@@ -104,12 +125,18 @@
   box-shadow: $shadow-sm;
   border-left: 4px solid $color-primary;
   transition: all $transition-base;
-  
+  flex: 1 1 calc(50% - 12px); // Two items per row on desktop (50% minus half the gap)
+  width: 100%;
+
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    flex: 1 1 100%; // One item per row on mobile
+  }
+
   &:hover {
     transform: translateX(8px);
     box-shadow: $shadow-md;
   }
-  
+
   .featureIcon {
     width: 24px;
     height: 24px;
@@ -117,17 +144,17 @@
     flex-shrink: 0;
     margin-top: 2px;
   }
-  
+
   .featureContent {
     flex: 1;
-    
+
     .featureTitle {
       font-size: $font-size-lg;
       font-weight: $font-weight-semibold;
       color: $color-secondary;
       margin-bottom: 8px;
     }
-    
+
     .featureDescription {
       font-size: $font-size-base;
       color: $color-gray-dark;
@@ -138,9 +165,9 @@
 
 .imageContainer {
   position: relative;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
-    order: 1;
+    order: 2;
   }
 }
 
@@ -150,7 +177,7 @@
   grid-template-rows: 1fr 1fr;
   gap: 24px;
   height: 500px;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     height: 300px;
     gap: 16px;
@@ -162,35 +189,39 @@
   overflow: hidden;
   position: relative;
   background-color: $color-gray-light;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba($color-primary, 0.2) 0%, transparent 100%);
+    background: linear-gradient(
+      135deg,
+      rgba($color-primary, 0.2) 0%,
+      transparent 100%
+    );
     z-index: 2;
     opacity: 0;
     transition: opacity $transition-base;
   }
-  
+
   &:hover::before {
     opacity: 1;
   }
-  
+
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform $transition-slow;
   }
-  
+
   &:hover img {
     transform: scale(1.05);
   }
-  
+
   &.large {
     grid-row: span 2;
   }
