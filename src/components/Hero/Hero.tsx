@@ -1,8 +1,13 @@
 "use client";
 
-import Button from "@/components/Button/Button";
-import { CheckCircle, Users, Shield, Clock, ChevronDown } from "lucide-react";
-import styles from "./Hero.module.scss";
+import {
+  CheckCircle,
+  Eraser,
+  Gavel,
+  Paintbrush,
+} from 'lucide-react';
+import Button from '@/components/Button/Button';
+import styles from './Hero.module.scss';
 
 export default function Hero() {
   const handleScrollToSection = (sectionId: string) => {
@@ -15,21 +20,18 @@ export default function Hero() {
   return (
     <section id="home" className={styles.hero}>
       <video className={styles.backgroundVideo} autoPlay muted loop playsInline>
-        <source
-          src="/Auto_Service_Website_Background_Video.mp4"
-          type="video/mp4"
-        />
+        <source src="/k24-bg.mp4" type="video/mp4" />
       </video>
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.badge}>
             <CheckCircle className={styles.icon} />
-            15+ років досвіду в автосервісі
+            12+ років досвіду в автосервісі
           </div>
 
           <h1 className={styles.title}>
-            Автосервіс повного <span className={styles.highlight}>циклу</span> у
-            Дніпрі
+            Кузовний центр
+            <span className={styles.highlight}> повного циклу</span> у Дніпрі
           </h1>
 
           <p className={styles.subtitle}>
@@ -40,6 +42,7 @@ export default function Hero() {
 
           <div className={styles.actions}>
             <Button
+              className={styles.button}
               variant="primary"
               size="large"
               onClick={() => handleScrollToSection("contact")}
@@ -47,6 +50,7 @@ export default function Hero() {
               Записатися на ремонт
             </Button>
             <Button
+              className={styles.button}
               variant="outline"
               size="large"
               onClick={() => handleScrollToSection("services")}
@@ -57,29 +61,21 @@ export default function Hero() {
 
           <div className={styles.features}>
             <div className={styles.feature}>
-              <Users className={styles.featureIcon} />
-              <span className={styles.featureText}>Кваліфіковані майстри</span>
+              <Gavel className={styles.featureIcon} />
+              <span className={styles.featureText}>Рихтовка</span>
             </div>
 
             <div className={styles.feature}>
-              <Shield className={styles.featureIcon} />
-              <span className={styles.featureText}>Гарантія на роботи</span>
+              <Paintbrush className={styles.featureIcon} />
+              <span className={styles.featureText}>Малярні роботи</span>
             </div>
 
             <div className={styles.feature}>
-              <Clock className={styles.featureIcon} />
-              <span className={styles.featureText}>Швидке виконання</span>
+              <Eraser className={styles.featureIcon} />
+              <span className={styles.featureText}>Поліровка</span>
             </div>
           </div>
         </div>
-      </div>
-
-      <div
-        className={styles.scrollIndicator}
-        onClick={() => handleScrollToSection("about")}
-      >
-        <span>Прокрутіть вниз</span>
-        <ChevronDown className={styles.scrollIcon} />
       </div>
     </section>
   );
