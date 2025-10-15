@@ -98,7 +98,7 @@ export default function About() {
       </div>
 
       <div className={styles.featuresSection}>
-        <h2 className={styles.featuresTitle}>Чому ми?</h2>
+        <h2 className={styles.featuresTitle}>Наші переваги:</h2>
         <div className={styles.features}>
           {features.map((feature, index) => (
             <div key={index} className={styles.feature}>

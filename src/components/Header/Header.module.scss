@@ -11,7 +11,7 @@
   transition: all $transition-base;
   
   &.scrolled {
-    background-color: rgba($color-secondary, 0.98);
+    background-color: rgba($color-secondary, 0.80);
     box-shadow: $shadow-lg;
   }
 }

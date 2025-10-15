@@ -302,55 +302,6 @@
   }
 }
 
-.emergencySection {
-  margin-top: 80px;
-  padding: 48px;
-  background: linear-gradient(
-    135deg,
-    rgba(220, 38, 38, 0.1) 0%,
-    rgba(220, 38, 38, 0.05) 100%
-  );
-  border: 2px solid rgba(220, 38, 38, 0.2);
-  border-radius: $border-radius-2xl;
-  text-align: center;
-
-  .emergencyIcon {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto 16px;
-    background: #dc2626;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-white;
-    font-size: $font-size-xl;
-  }
-
-  .emergencyTitle {
-    font-size: $font-size-xl;
-    font-weight: $font-weight-bold;
-    color: #dc2626;
-    margin-bottom: 8px;
-  }
-
-  .emergencyText {
-    color: $color-gray-dark;
-    margin-bottom: 24px;
-    line-height: 1.6;
-  }
-
-  .emergencyButton {
-    background: #dc2626;
-    border-color: #dc2626;
-
-    &:hover {
-      background: #b91c1c;
-      border-color: #b91c1c;
-    }
-  }
-}
-
 .mapSection {
   margin-top: 80px;
 

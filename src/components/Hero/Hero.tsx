@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  CheckCircle,
-  Eraser,
-  Gavel,
-  Paintbrush,
-} from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 import Button from '@/components/Button/Button';
 import styles from './Hero.module.scss';
 
@@ -57,23 +52,6 @@ export default function Hero() {
             >
               Наші послуги
             </Button>
-          </div>
-
-          <div className={styles.features}>
-            <div className={styles.feature}>
-              <Gavel className={styles.featureIcon} />
-              <span className={styles.featureText}>Рихтовка</span>
-            </div>
-
-            <div className={styles.feature}>
-              <Paintbrush className={styles.featureIcon} />
-              <span className={styles.featureText}>Малярні роботи</span>
-            </div>
-
-            <div className={styles.feature}>
-              <Eraser className={styles.featureIcon} />
-              <span className={styles.featureText}>Поліровка</span>
-            </div>
           </div>
         </div>
       </div>
