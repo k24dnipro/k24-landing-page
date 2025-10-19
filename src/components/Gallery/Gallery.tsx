@@ -1,10 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Section from "@/components/Section/Section";
-import Button from "@/components/Button/Button";
-import { GalleryImage } from "@/types";
-import styles from "./Gallery.module.scss";
+import {
+  useEffect,
+  useState,
+} from 'react';
+import Image from 'next/image';
+import Button from '@/components/Button/Button';
+import Section from '@/components/Section/Section';
+import { GalleryImage } from '@/types';
+import { ImgComparisonSlider } from '@img-comparison-slider/react';
+import styles from './Gallery.module.scss';
 
 export default function Gallery() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -16,8 +21,6 @@ export default function Gallery() {
     { id: "engine", label: "Двигун" },
     { id: "body", label: "Кузов" },
     { id: "interior", label: "Салон" },
-    { id: "suspension", label: "Підвіска" },
-    { id: "electrical", label: "Електрика" },
   ];
 
   const galleryImages: GalleryImage[] = [
@@ -48,60 +51,7 @@ export default function Gallery() {
       description:
         "Повна реставрація шкіряних сидінь та оновлення панелі приладів.",
     },
-    {
-      id: "4",
-      title: "Заміна підвіски Toyota Camry",
-      category: "suspension",
-      beforeImage: "/placeholder-before.jpg",
-      afterImage: "/placeholder-after.jpg",
-      description:
-        "Повна заміна передньої підвіски з амортизаторами та пружинами.",
-    },
-    {
-      id: "5",
-      title: "Ремонт електропроводки Volkswagen",
-      category: "electrical",
-      beforeImage: "/placeholder-before.jpg",
-      afterImage: "/placeholder-after.jpg",
-      description:
-        "Діагностика та повний ремонт електричної системи автомобіля.",
-    },
-    {
-      id: "6",
-      title: "Тюнінг двигуна Honda Civic",
-      category: "engine",
-      beforeImage: "/placeholder-before.jpg",
-      afterImage: "/placeholder-after.jpg",
-      description:
-        "Форсування двигуна з установкою турбокомпресора та інтеркулера.",
-    },
-    {
-      id: "7",
-      title: "Відновлення після повені Hyundai",
-      category: "electrical",
-      beforeImage: "/placeholder-before.jpg",
-      afterImage: "/placeholder-after.jpg",
-      description:
-        "Повне відновлення автомобіля після потоплення з заміною всієї електроніки.",
-    },
-    {
-      id: "8",
-      title: "Рестайлінг Ford Focus",
-      category: "body",
-      beforeImage: "/placeholder-before.jpg",
-      afterImage: "/placeholder-after.jpg",
-      description:
-        "Зміна зовнішнього вигляду з установкою нового обвісу та оптики.",
-    },
-    {
-      id: "9",
-      title: "Спортивна підвіска Subaru WRX",
-      category: "suspension",
-      beforeImage: "/placeholder-before.jpg",
-      afterImage: "/placeholder-after.jpg",
-      description:
-        "Установка спортивної підвіски з регульованими амортизаторами.",
-    },
+  
   ];
 
   const filteredImages =
@@ -174,43 +124,26 @@ export default function Gallery() {
             onClick={() => openModal(image)}
           >
             <div className={styles.imageContainer}>
-              <div className={styles.imageComparison}>
-                <div className={styles.labels}>
-                  <span className={styles.beforeLabel}>ДО</span>
-                  <span className={styles.afterLabel}>ПІСЛЯ</span>
+              <ImgComparisonSlider className={styles.comparisonSlider}>
+                <div slot="first" className={styles.beforeImage}>
+                  <div className={styles.beforeLabel}>ДО</div>
+                  <Image 
+                    src={image.beforeImage} 
+                    alt={`До: ${image.title}`}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
-
-                {/* Placeholder images */}
-                <div
-                  className={styles.beforeImage}
-                  style={{
-                    background: "linear-gradient(135deg, #666 0%, #999 100%)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "white",
-                    fontSize: "0.875rem",
-                  }}
-                >
-                  ДО ремонту
+                <div slot="second" className={styles.afterImage}>
+                  <div className={styles.afterLabel}>ПІСЛЯ</div>
+                  <Image 
+                    src={image.afterImage} 
+                    alt={`Після: ${image.title}`}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
-                <div
-                  className={styles.afterImage}
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #FFED00 0%, #FFF347 100%)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#000",
-                    fontSize: "0.875rem",
-                  }}
-                >
-                  ПІСЛЯ ремонту
-                </div>
-
-                <div className={styles.slider}></div>
-              </div>
+              </ImgComparisonSlider>
             </div>
 
             <div className={styles.itemContent}>
@@ -247,42 +180,26 @@ export default function Gallery() {
             </button>
 
             <div className={styles.imageContainer}>
-              <div className={styles.imageComparison}>
-                <div className={styles.labels}>
-                  <span className={styles.beforeLabel}>ДО</span>
-                  <span className={styles.afterLabel}>ПІСЛЯ</span>
+              <ImgComparisonSlider className={styles.comparisonSlider}>
+                <div slot="first" className={styles.beforeImage}>
+                  <div className={styles.beforeLabel}>ДО</div>
+                  <Image 
+                    src={selectedImage.beforeImage} 
+                    alt={`До: ${selectedImage.title}`}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
-
-                <div
-                  className={styles.beforeImage}
-                  style={{
-                    background: "linear-gradient(135deg, #666 0%, #999 100%)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "white",
-                    fontSize: "1.25rem",
-                  }}
-                >
-                  ДО ремонту
+                <div slot="second" className={styles.afterImage}>
+                  <div className={styles.afterLabel}>ПІСЛЯ</div>
+                  <Image 
+                    src={selectedImage.afterImage} 
+                    alt={`Після: ${selectedImage.title}`}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
-                <div
-                  className={styles.afterImage}
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #FFED00 0%, #FFF347 100%)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#000",
-                    fontSize: "1.25rem",
-                  }}
-                >
-                  ПІСЛЯ ремонту
-                </div>
-
-                <div className={styles.slider}></div>
-              </div>
+              </ImgComparisonSlider>
             </div>
 
             <div className={styles.modalInfo}>

@@ -112,11 +112,8 @@ export default function Services() {
               <div className={styles.serviceHeader}>
                 <div className={styles.serviceIcon}>{service.icon}</div>
               </div>
-
               <h3 className={styles.serviceTitle}>{service.title}</h3>
-
               <p className={styles.serviceDescription}>{service.description}</p>
-
               <ul className={styles.serviceFeatures}>
                 {service.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className={styles.featureItem}>

@@ -11,12 +11,14 @@ export default function Button({
   disabled = false,
   type = 'button',
   className = '',
+  target,
+  rel,
 }: ButtonProps) {
   const buttonClasses = `${styles.button} ${styles[variant]} ${styles[size]} ${className}`.trim();
 
   if (href && !disabled) {
     return (
-      <Link href={href} className={buttonClasses}>
+      <Link href={href} className={buttonClasses} target={target} rel={rel}>
         {children}
       </Link>
     );
