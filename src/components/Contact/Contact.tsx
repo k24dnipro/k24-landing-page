@@ -29,7 +29,8 @@ export default function Contact() {
   const contactInfo: ContactInfo = {
     phone: "+38 (067) 123-45-67",
     email: "info@k24dnipro.com",
-    address: "вул. Автомобільна, 24, Дніпро, 49000",
+    address:
+      "вулиця Нижньодніпровська, Дніпро, Дніпропетровська область, 49000",
     workingHours: {
       weekdays: "Пн-Пт: 08:00 - 20:00",
       weekend: "Сб-Нд: 09:00 - 18:00",
@@ -155,7 +156,6 @@ export default function Contact() {
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Адреса</h3>
                 <p className={styles.cardText}>{contactInfo.address}</p>
-                <p className={styles.cardText}>Район Центральний</p>
               </div>
             </div>
             <div className={styles.mapContainer}>
