@@ -56,6 +56,8 @@
   transition: all $transition-base;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 
   &::before {
     content: "";
@@ -91,7 +93,7 @@
 .serviceHeader {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 32px;
 }
 
@@ -174,6 +176,9 @@
 
 .serviceAction {
   width: 100%;
+  margin-top: auto;
+  position: relative;
+  z-index: 10;
 }
 
 .ctaSection {
