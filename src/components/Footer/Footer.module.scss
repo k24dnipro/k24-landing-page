@@ -1,23 +1,10 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .footer {
-  background: linear-gradient(135deg, $color-secondary 0%, rgba($color-secondary, 0.95) 100%);
+  background: rgb(18 18 18);
   color: $color-white;
   position: relative;
   overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      radial-gradient(circle at 20% 50%, rgba($color-primary, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 50%, rgba($color-primary, 0.05) 0%, transparent 50%);
-    z-index: 1;
-  }
 }
 
 .container {
@@ -25,7 +12,7 @@
   margin: 0 auto;
   padding: 0 $container-padding;
   width: 100%;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     padding: 0 16px;
   }
@@ -34,64 +21,28 @@
 }
 
 .main {
-  padding: 80px 0 64px;
+  padding: 50px 0 32px;
   border-bottom: 1px solid rgba($color-white, 0.1);
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 64px;
-  
-  @media (min-width: $breakpoint-sm) and (max-width: #{$breakpoint-lg - 1px}) {
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-  }
-  
-  @media (max-width: #{$breakpoint-sm - 1px}) {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
+  display: flex;
+  gap: 32px;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .brand {
+  display: flex;
+  gap: 32px;
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     text-align: center;
   }
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-content: flex-start;
-  gap: 8px;
-  margin-bottom: 24px;
-  text-decoration: none;
-  
-  @media (max-width: #{$breakpoint-sm - 1px}) {
-    justify-content: center;
-  }
-  
-  .logoIcon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
-    border-radius: $border-radius-lg;
-    display: flex;
-  align-items: center;
-  justify-content: center;
-    color: $color-secondary;
-    font-weight: $font-weight-extrabold;
-    font-size: $font-size-xl;
-  }
-  
-  .logoText {
-    font-family: $font-family-secondary;
-    font-size: $font-size-2xl;
-    font-weight: $font-weight-extrabold;
-    color: $color-primary;
-  }
+.logoImage {
+  border-radius: 16px;
 }
 
 .brandDescription {
@@ -99,7 +50,7 @@
   line-height: 1.7;
   margin-bottom: 32px;
   max-width: 400px;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     max-width: none;
   }
@@ -111,7 +62,7 @@
   justify-content: center;
   gap: 16px;
   justify-content: flex-start;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     justify-content: center;
   }
@@ -129,7 +80,7 @@
   color: rgba($color-white, 0.8);
   text-decoration: none;
   transition: all $transition-base;
-  
+
   &:hover {
     background: $color-primary;
     border-color: $color-primary;
@@ -137,7 +88,7 @@
     transform: translateY(-3px);
     box-shadow: $shadow-md;
   }
-  
+
   svg {
     width: 20px;
     height: 20px;
@@ -156,16 +107,16 @@
   color: $color-white;
   margin-bottom: 24px;
   position: relative;
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -8px;
     left: 0;
     width: 30px;
     height: 2px;
     background: $color-primary;
-    
+
     @media (max-width: #{$breakpoint-sm - 1px}) {
       left: 50%;
       transform: translateX(-50%);
@@ -175,10 +126,10 @@
 
 .linkList {
   list-style: none;
-  
+
   li {
     margin-bottom: 8px;
-    
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -190,7 +141,7 @@
   text-decoration: none;
   transition: all $transition-base;
   font-size: $font-size-base;
-  
+
   &:hover {
     color: $color-primary;
     padding-left: 8px;
@@ -205,30 +156,30 @@
   gap: 8px;
   margin-bottom: 16px;
   color: rgba($color-white, 0.8);
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     justify-content: center;
   }
-  
+
   &:last-child {
     margin-bottom: 0;
   }
-  
+
   .contactIcon {
     width: 18px;
     height: 18px;
     color: $color-primary;
     flex-shrink: 0;
   }
-  
+
   .contactText {
     flex: 1;
-    
+
     a {
       color: inherit;
       text-decoration: none;
       transition: color $transition-base;
-      
+
       &:hover {
         color: $color-primary;
       }
@@ -242,7 +193,7 @@
   background: rgba($color-primary, 0.1);
   border-radius: $border-radius-lg;
   border: 1px solid rgba($color-primary, 0.2);
-  
+
   .hoursTitle {
     font-size: $font-size-sm;
     font-weight: $font-weight-semibold;
@@ -251,12 +202,12 @@
     text-transform: uppercase;
     letter-spacing: 1px;
   }
-  
+
   .hoursItem {
     color: rgba($color-white, 0.8);
     font-size: $font-size-sm;
     margin-bottom: 4px;
-    
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -269,7 +220,7 @@
   align-items: center;
   justify-content: space-between;
   align-items: center;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     display: flex;
     flex-direction: column;
@@ -281,30 +232,6 @@
 .copyright {
   color: rgba($color-white, 0.6);
   font-size: $font-size-sm;
-}
-
-.bottomLinks {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  
-  @media (max-width: #{$breakpoint-sm - 1px}) {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-}
-
-.bottomLink {
-  color: rgba($color-white, 0.6);
-  text-decoration: none;
-  font-size: $font-size-sm;
-  transition: color $transition-base;
-  
-  &:hover {
-    color: $color-primary;
-  }
 }
 
 .backToTop {
@@ -326,30 +253,30 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(20px);
-  
+
   &.visible {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
-  
+
   &:hover {
     background: $color-primary-light;
     transform: translateY(-4px);
     box-shadow: $shadow-lg;
   }
-  
+
   svg {
     width: 24px;
     height: 24px;
   }
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     bottom: 24px;
     right: 24px;
     width: 45px;
     height: 45px;
-    
+
     svg {
       width: 20px;
       height: 20px;
