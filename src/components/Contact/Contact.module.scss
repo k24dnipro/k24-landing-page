@@ -183,6 +183,17 @@
   }
 }
 
+.errorBanner {
+  background-color: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  padding: 12px 16px;
+  border-radius: $border-radius-md;
+  margin-bottom: 24px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
 .formLabel {
   display: block;
   font-weight: $font-weight-medium;

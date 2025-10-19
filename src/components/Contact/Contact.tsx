@@ -6,25 +6,35 @@ import {
   MapPin,
   Phone,
 } from 'lucide-react';
+import { useForm } from 'react-hook-form';
 import Button from '@/components/Button/Button';
 import Section from '@/components/Section/Section';
-import {
-  ContactInfo,
-  FormData,
-} from '@/types';
+import { ContactInfo } from '@/types';
 import styles from './Contact.module.scss';
 
+interface FormData {
+  name: string;
+  phone: string;
+  message?: string;
+}
+
 export default function Contact() {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    phone: "",
-    email: "",
-    service: "",
-    message: "",
-  });
-  const [errors, setErrors] = useState<Partial<FormData>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // Your Telegram group chat ID - you need to get this
+  // To get it: Add your bot to the group, then visit:
+  // https://api.telegram.org/bot8375912165:AAH6hGtPkICLLhhlFrz3CRtySqvc75FOe9U/getUpdates
+  const TELEGRAM_CHAT_ID = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID || '-4819273916';
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<FormData>({
+    mode: 'onBlur',
+  });
 
   const contactInfo: ContactInfo = {
     phone: "+38 (067) 123-45-67",
@@ -37,57 +47,36 @@ export default function Contact() {
     },
   };
 
-  const validateForm = (): boolean => {
-    const newErrors: Partial<FormData> = {};
+  const onSubmit = async (data: FormData) => {
+    setSubmitError(null);
 
-    if (!formData.name.trim()) {
-      newErrors.name = "Вкажіть ваше ім'я";
-    }
-
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Вкажіть номер телефону";
-    } else if (
-      !/^\+?3?8?0\d{9}$/.test(formData.phone.replace(/[\s\-\(\)]/g, ""))
-    ) {
-      newErrors.phone = "Невірний формат номера телефону";
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-
-    // Clear error when user starts typing
-    if (errors[name as keyof FormData]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!validateForm()) return;
-
-    setIsSubmitting(true);
-
-    // Simulate form submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      const response = await fetch('/api/telegram', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          phone: data.phone,
+          message: data.message || '',
+          chatId: TELEGRAM_CHAT_ID,
+        }),
+      });
 
-      console.log("Form submitted:", formData);
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
       setIsSubmitted(true);
-      setFormData({ name: "", phone: "", email: "", service: "", message: "" });
+      reset();
     } catch (error) {
-      console.error("Form submission error:", error);
-    } finally {
-      setIsSubmitting(false);
+      console.error('Form submission error:', error);
+      setSubmitError(
+        error instanceof Error ? error.message : 'Помилка відправки форми. Спробуйте ще раз.'
+      );
     }
   };
 
@@ -176,12 +165,18 @@ export default function Contact() {
         </div>
 
         <div className={styles.formContainer}>
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <h3 className={styles.formTitle}>Записатися на ремонт</h3>
             <p className={styles.formDescription}>
               Заповніть форму, і наш менеджер зв&apos;яжеться з вами протягом 15
               хвилин
             </p>
+
+            {submitError && (
+              <div className={styles.errorBanner}>
+                {submitError}
+              </div>
+            )}
 
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
@@ -191,16 +186,20 @@ export default function Contact() {
                 <input
                   type="text"
                   id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
+                  {...register('name', {
+                    required: "Вкажіть ваше ім'я",
+                    minLength: {
+                      value: 2,
+                      message: "Ім'я повинно містити мінімум 2 символи",
+                    },
+                  })}
                   className={`${styles.formInput} ${
                     errors.name ? styles.error : ""
                   }`}
                   placeholder="Введіть ваше ім'я"
                 />
                 {errors.name && (
-                  <div className={styles.errorMessage}>{errors.name}</div>
+                  <div className={styles.errorMessage}>{errors.name.message}</div>
                 )}
               </div>
 
@@ -211,16 +210,20 @@ export default function Contact() {
                 <input
                   type="tel"
                   id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
+                  {...register('phone', {
+                    required: "Вкажіть номер телефону",
+                    pattern: {
+                      value: /^\+?3?8?0?\d{9}$/,
+                      message: "Невірний формат номера телефону",
+                    },
+                  })}
                   className={`${styles.formInput} ${
                     errors.phone ? styles.error : ""
                   }`}
                   placeholder="+38 (067) 123-45-67"
                 />
                 {errors.phone && (
-                  <div className={styles.errorMessage}>{errors.phone}</div>
+                  <div className={styles.errorMessage}>{errors.phone.message}</div>
                 )}
               </div>
             </div>
@@ -231,9 +234,7 @@ export default function Contact() {
               </label>
               <textarea
                 id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
+                {...register('message')}
                 className={styles.formTextarea}
                 placeholder="Опишіть проблему або додайте коментар..."
                 rows={4}
