@@ -1,10 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { Phone } from "lucide-react";
-import styles from "./Header.module.scss";
-import { NavigationItem } from "@/types";
+import {
+  useEffect,
+  useState,
+} from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { NavigationItem } from '@/types';
+import styles from './Header.module.scss';
 
 const navigationItems: NavigationItem[] = [
   { id: "home", label: "Головна", href: "#home" },
@@ -19,10 +22,29 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      // Update scrolled state
+      setIsScrolled(currentScrollY > 50);
+
+      // Update visibility based on scroll direction
+      if (currentScrollY < 10) {
+        // Always show header at the top
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling down - hide header
+        setIsVisible(false);
+      } else {
+        // Scrolling up - show header
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
     };
 
     const handleSectionChange = () => {
@@ -48,7 +70,7 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("scroll", handleSectionChange);
     };
-  }, []);
+  }, [lastScrollY]);
 
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false);
@@ -66,14 +88,21 @@ export default function Header() {
   };
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
+    <header
+      className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${
+        !isVisible ? styles.hidden : ""
+      }`}
+    >
       <div className={styles.container}>
-        <Link
-          href="/"
-          className={styles.logo}
-          onClick={() => handleNavClick("#home")}
-        >
-          <div className={styles.logoIcon}>K24</div>
+        <Link href="/" onClick={() => handleNavClick("#home")}>
+          <Image
+            src="/logo.png"
+            alt="K24"
+            width={50}
+            height={50}
+            sizes="50px"
+            className={styles.logoImage}
+          />
         </Link>
 
         <nav className={styles.nav}>
@@ -92,11 +121,6 @@ export default function Header() {
         </nav>
 
         <div className={styles.contactInfo}>
-          <a href="tel:+380671234567" className={styles.phone}>
-            <Phone className={styles.phoneIcon} />
-            +38 (067) 123-45-67
-          </a>
-
           <Link
             href="#contact"
             className={styles.ctaButton}
@@ -141,11 +165,6 @@ export default function Header() {
                 </Link>
               </li>
             ))}
-            <li>
-              <a href="tel:+380671234567" className={styles.mobileNavLink}>
-                +38 (067) 123-45-67
-              </a>
-            </li>
           </ul>
         </div>
       </div>

@@ -1,4 +1,4 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .header {
   position: fixed;
@@ -6,13 +6,19 @@
   left: 0;
   right: 0;
   z-index: $z-fixed;
-  background-color: rgba($color-secondary, 0.95);
-  backdrop-filter: blur(10px);
-  transition: all $transition-base;
-  
+  background-color: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(20px);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+  transform: translateY(0);
+
   &.scrolled {
-    background-color: rgba($color-secondary, 0.80);
-    box-shadow: $shadow-lg;
+    background-color: rgba(18, 18, 18, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  &.hidden {
+    transform: translateY(-100%);
   }
 }
 
@@ -25,51 +31,15 @@
   align-items: center;
   justify-content: space-between;
   min-height: 70px;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     min-height: 60px;
     padding: 8px 16px;
   }
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: $font-family-secondary;
-  font-size: $font-size-2xl;
-  font-weight: $font-weight-extrabold;
-  color: $color-primary;
-  text-decoration: none;
-  gap: 8px;
-  
-  &:hover {
-    transform: scale(1.02);
-  }
-  
-  @media (max-width: #{$breakpoint-sm - 1px}) {
-    font-size: $font-size-xl;
-    gap: 4px;
-  }
-  
-  .logoIcon {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
-    border-radius: $border-radius-md;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: $font-weight-extrabold;
-    color: $color-secondary;
-    font-size: $font-size-lg;
-    
-    @media (max-width: #{$breakpoint-sm - 1px}) {
-      width: 32px;
-      height: 32px;
-      font-size: $font-size-base;
-    }
-  }
+.logoImage {
+  border-radius: 16px;
 }
 
 .nav {
@@ -78,7 +48,7 @@
     align-items: center;
     gap: 32px;
   }
-  
+
   @media (max-width: #{$breakpoint-lg - 1px}) {
     display: none;
   }
@@ -92,17 +62,17 @@
   border-radius: $border-radius-md;
   transition: all $transition-base;
   position: relative;
-  
+
   &:hover {
     color: $color-primary;
     background-color: rgba($color-primary, 0.1);
   }
-  
+
   &.active {
     color: $color-primary;
-    
+
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -2px;
       left: 50%;
@@ -119,7 +89,7 @@
   @media (min-width: $breakpoint-lg) {
     display: none;
   }
-  
+
   background: none;
   border: none;
   color: $color-white;
@@ -127,18 +97,18 @@
   padding: 8px;
   cursor: pointer;
   transition: color $transition-base;
-  
+
   &:hover {
     color: $color-primary;
   }
-  
+
   .hamburger {
     display: flex;
     flex-direction: column;
     gap: 4px;
     width: 24px;
     height: 18px;
-    
+
     span {
       display: block;
       width: 100%;
@@ -148,16 +118,16 @@
       transition: all $transition-base;
       transform-origin: center;
     }
-    
+
     &.open {
       span:nth-child(1) {
         transform: rotate(45deg) translate(6px, 6px);
       }
-      
+
       span:nth-child(2) {
         opacity: 0;
       }
-      
+
       span:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
       }
@@ -170,21 +140,20 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: rgba($color-secondary, 0.98);
+  background-color: rgba(18, 18, 18, 0.95);
   backdrop-filter: blur(10px);
-  border-top: 1px solid rgba($color-primary, 0.2);
   padding: 24px 0;
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
   transition: all $transition-base;
-  
+
   &.open {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
   }
-  
+
   .mobileNavList {
     max-width: $container-max-width;
     margin: 0 auto;
@@ -194,12 +163,12 @@
     flex-direction: column;
     gap: 16px;
     list-style: none;
-    
+
     @media (max-width: #{$breakpoint-sm - 1px}) {
       padding: 0 16px;
     }
   }
-  
+
   .mobileNavLink {
     color: $color-white;
     font-weight: $font-weight-medium;
@@ -208,7 +177,7 @@
     border-radius: $border-radius-md;
     transition: all $transition-base;
     text-align: center;
-    
+
     &:hover,
     &.active {
       color: $color-primary;
@@ -222,7 +191,7 @@
   align-items: center;
   justify-content: center;
   gap: 24px;
-  
+
   @media (max-width: #{$breakpoint-lg - 1px}) {
     display: none;
   }
@@ -237,11 +206,11 @@
   font-weight: $font-weight-medium;
   font-size: $font-size-base;
   transition: color $transition-base;
-  
+
   &:hover {
     color: $color-primary;
   }
-  
+
   .phoneIcon {
     width: 18px;
     height: 18px;
@@ -265,22 +234,22 @@
   background-color: $color-primary;
   color: $color-secondary;
   font-size: $font-size-sm;
-  
+
   &:hover:not(:disabled) {
     background-color: $color-primary-light;
     transform: translateY(-2px);
     box-shadow: $shadow-lg;
   }
-  
+
   &:active {
     transform: translateY(0);
   }
-  
+
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
-  
+
   @media (max-width: #{$breakpoint-lg - 1px}) {
     display: none;
   }
