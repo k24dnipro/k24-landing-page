@@ -1,24 +1,32 @@
-@use '../../styles/variables' as *;
+@use "../../styles/variables" as *;
 
 .reviews {
-  background: linear-gradient(135deg, 
-    rgba($color-secondary, 0.95) 0%, 
+  background: linear-gradient(
+    135deg,
+    rgba($color-secondary, 0.95) 0%,
     rgba($color-secondary, 0.98) 50%,
     rgba($color-secondary, 0.95) 100%
   );
   position: relative;
   overflow: hidden;
-  
+
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-      radial-gradient(circle at 30% 70%, rgba($color-primary, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 70% 30%, rgba($color-primary, 0.06) 0%, transparent 50%);
+    background-image: radial-gradient(
+        circle at 30% 70%,
+        rgba($color-primary, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 70% 30%,
+        rgba($color-primary, 0.06) 0%,
+        transparent 50%
+      );
     z-index: 1;
   }
 }
@@ -33,11 +41,111 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 32px;
   margin-bottom: 80px;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     margin-bottom: 64px;
+  }
+}
+
+.googleReviewsSection {
+  background: rgba(7, 7, 7, 0.8);
+  border-radius: $border-radius-2xl;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    padding: 24px;
+    width: 100%;
+  }
+}
+
+.googleReviewsContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 52px;
+
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+}
+
+.googleReviewsInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.googleLogo {
+  flex-shrink: 0;
+}
+
+.googleReviewsText {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    display: none;
+  }
+}
+
+.googleReviewsTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  margin: 0;
+  line-height: 1.2;
+
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    font-size: $font-size-lg;
+  }
+}
+
+.googleReviewsSubtitle {
+  font-size: $font-size-base;
+  color: rgba($color-white, 0.7);
+  margin: 0;
+
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    font-size: $font-size-sm;
+  }
+}
+
+.googleReviewsButton {
+  flex-shrink: 0;
+  background: linear-gradient(
+    135deg,
+    $color-primary 0%,
+    $color-primary-light 100%
+  ) !important;
+  border: none !important;
+  color: $color-secondary !important;
+  font-weight: $font-weight-bold !important;
+  box-shadow: 0 4px 16px rgba($color-primary, 0.3) !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba($color-primary, 0.4) !important;
+    background: linear-gradient(
+      135deg,
+      $color-primary-light 0%,
+      $color-primary 100%
+    ) !important;
+  }
+
+  &:active {
+    transform: translateY(0) !important;
   }
 }
 
@@ -49,18 +157,22 @@
   border-radius: $border-radius-xl;
   backdrop-filter: blur(10px);
   transition: all $transition-base;
-  
+
   &:hover {
     transform: translateY(-4px);
     border-color: rgba($color-primary, 0.4);
     background: rgba($color-white, 0.1);
   }
-  
+
   .statIcon {
     width: 40px;
     height: 40px;
     margin: 0 auto 16px;
-    background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+    background: linear-gradient(
+      135deg,
+      $color-primary 0%,
+      $color-primary-light 100%
+    );
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -68,7 +180,7 @@
     color: $color-secondary;
     font-size: $font-size-lg;
   }
-  
+
   .statNumber {
     font-size: clamp(2rem, 3vw, 2.5rem);
     font-weight: $font-weight-extrabold;
@@ -76,7 +188,7 @@
     margin-bottom: 8px;
     display: block;
   }
-  
+
   .statLabel {
     color: rgba($color-white, 0.8);
     font-size: $font-size-base;
@@ -89,7 +201,7 @@
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 32px;
   margin-bottom: 64px;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -104,31 +216,11 @@
   backdrop-filter: blur(10px);
   transition: all $transition-base;
   position: relative;
-  
+
   &:hover {
     transform: translateY(-8px);
     border-color: rgba($color-primary, 0.3);
     box-shadow: 0 20px 40px rgba($color-primary, 0.15);
-  }
-  
-  &.featured {
-    border: 2px solid $color-primary;
-    background: rgba($color-primary, 0.1);
-    
-    &::before {
-      content: 'РЕКОМЕНДОВАНИЙ ВІДГУК';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: $color-primary;
-      color: $color-secondary;
-      padding: 4px 16px;
-      font-size: $font-size-xs;
-      font-weight: $font-weight-bold;
-      border-radius: $border-radius-md;
-      white-space: nowrap;
-    }
   }
 }
 
@@ -146,11 +238,15 @@
   justify-content: center;
   gap: 16px;
   flex: 1;
-  
+
   .avatar {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+    background: linear-gradient(
+      135deg,
+      $color-primary 0%,
+      $color-primary-light 100%
+    );
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -160,17 +256,17 @@
     font-size: $font-size-lg;
     flex-shrink: 0;
   }
-  
+
   .authorInfo {
     flex: 1;
-    
+
     .authorName {
       font-size: $font-size-lg;
       font-weight: $font-weight-semibold;
       color: $color-white;
       margin-bottom: 4px;
     }
-    
+
     .reviewDate {
       font-size: $font-size-sm;
       color: rgba($color-white, 0.6);
@@ -183,13 +279,13 @@
   align-items: center;
   justify-content: center;
   gap: 4px;
-  
+
   .star {
     width: 18px;
     height: 18px;
     color: $color-primary;
   }
-  
+
   .emptyStar {
     color: rgba($color-white, 0.3);
   }
@@ -209,46 +305,29 @@
   line-height: 1.7;
   font-size: $font-size-base;
   position: relative;
-  
-  &::before {
-    content: '"';
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    font-size: 3rem;
-    color: rgba($color-primary, 0.3);
-    font-family: serif;
-  }
-  
-  &::after {
-    content: '"';
-    position: absolute;
-    bottom: -20px;
-    right: -5px;
-    font-size: 3rem;
-    color: rgba($color-primary, 0.3);
-    font-family: serif;
-  }
 }
 
 .ctaSection {
   text-align: center;
-  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
   background: rgba($color-primary, 0.1);
   border-radius: $border-radius-2xl;
   border: 2px solid rgba($color-primary, 0.3);
   backdrop-filter: blur(10px);
-  
-  @media (max-width: #{$breakpoint-sm - 1px}) {
-    padding: 48px;
-  }
 }
 
 .ctaIcon {
   width: 60px;
   height: 60px;
   margin: 0 auto 24px;
-  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  background: linear-gradient(
+    135deg,
+    $color-primary 0%,
+    $color-primary-light 100%
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -279,7 +358,7 @@
   align-items: center;
   justify-content: center;
   gap: 24px;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     display: flex;
     flex-direction: column;
@@ -293,7 +372,7 @@
   justify-content: center;
   gap: 24px;
   margin-top: 32px;
-  
+
   @media (max-width: #{$breakpoint-sm - 1px}) {
     display: flex;
     flex-direction: column;
@@ -312,13 +391,13 @@
   padding: 8px 24px;
   border-radius: $border-radius-md;
   border: 1px solid rgba($color-white, 0.2);
-  
+
   &:hover {
     color: $color-primary;
     border-color: rgba($color-primary, 0.5);
     background: rgba($color-primary, 0.1);
   }
-  
+
   .platformIcon {
     width: 20px;
     height: 20px;
@@ -328,7 +407,7 @@
 // Animation for review cards
 .reviewCard {
   animation: slideInUp 0.8s ease forwards;
-  
+
   @for $i from 1 through 6 {
     &:nth-child(#{$i}) {
       animation-delay: #{$i * 0.15}s;
