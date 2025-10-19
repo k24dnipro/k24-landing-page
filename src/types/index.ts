@@ -40,11 +40,6 @@ export interface ContactInfo {
     weekdays: string;
     weekend: string;
   };
-  socialMedia: {
-    instagram?: string;
-    facebook?: string;
-    telegram?: string;
-  };
 }
 
 export interface FormData {

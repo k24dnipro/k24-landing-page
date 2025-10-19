@@ -134,6 +134,44 @@
   }
 }
 
+.mapContainer {
+  margin-bottom: 48px;
+  
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    margin-bottom: 32px;
+  }
+}
+
+.mapTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-secondary;
+  margin-bottom: 24px;
+  text-align: center;
+  
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    font-size: $font-size-lg;
+  }
+}
+
+.mapWrapper {
+  border-radius: $border-radius-xl;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  background: $color-white;
+  padding: 8px;
+  
+  iframe {
+    border-radius: $border-radius-lg;
+    width: 100%;
+    height: 300px;
+    
+    @media (max-width: #{$breakpoint-sm - 1px}) {
+      height: 250px;
+    }
+  }
+}
+
 .formContainer {
   @media (max-width: #{$breakpoint-sm - 1px}) {
     order: 1;

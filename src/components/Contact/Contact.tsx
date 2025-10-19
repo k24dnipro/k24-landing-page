@@ -3,12 +3,7 @@
 import { useState } from 'react';
 import {
   CheckCircle,
-  Clock,
-  Facebook,
-  Instagram,
-  Mail,
   MapPin,
-  MessageCircle,
   Phone,
 } from 'lucide-react';
 import Button from '@/components/Button/Button';
@@ -39,24 +34,7 @@ export default function Contact() {
       weekdays: "Пн-Пт: 08:00 - 20:00",
       weekend: "Сб-Нд: 09:00 - 18:00",
     },
-    socialMedia: {
-      instagram: "https://instagram.com/k24dnipro",
-      facebook: "https://facebook.com/k24dnipro",
-      telegram: "https://t.me/k24dnipro",
-    },
   };
-
-  const services = [
-    { value: "", label: "Оберіть послугу" },
-    { value: "engine", label: "Ремонт двигуна" },
-    { value: "transmission", label: "Ремонт трансмісії" },
-    { value: "brakes", label: "Гальмівна система" },
-    { value: "suspension", label: "Підвіска та рульове" },
-    { value: "electrical", label: "Електрообладнання" },
-    { value: "maintenance", label: "Технічне обслуговування" },
-    { value: "emergency", label: "Термінова допомога" },
-    { value: "other", label: "Інше" },
-  ];
 
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
@@ -71,14 +49,6 @@ export default function Contact() {
       !/^\+?3?8?0\d{9}$/.test(formData.phone.replace(/[\s\-\(\)]/g, ""))
     ) {
       newErrors.phone = "Невірний формат номера телефону";
-    }
-
-    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Невірний формат email";
-    }
-
-    if (!formData.service) {
-      newErrors.service = "Оберіть послугу";
     }
 
     setErrors(newErrors);
@@ -175,25 +145,6 @@ export default function Contact() {
                     {contactInfo.phone}
                   </a>
                 </p>
-                <p className={styles.cardText}>Цілодобова лінія підтримки</p>
-              </div>
-            </div>
-
-            <div className={styles.infoCard}>
-              <div className={styles.cardIcon}>
-                <Mail />
-              </div>
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>Email</h3>
-                <p className={styles.cardText}>
-                  <a
-                    href={`mailto:${contactInfo.email}`}
-                    className={styles.cardLink}
-                  >
-                    {contactInfo.email}
-                  </a>
-                </p>
-                <p className={styles.cardText}>Відповідаємо протягом години</p>
               </div>
             </div>
 
@@ -207,50 +158,20 @@ export default function Contact() {
                 <p className={styles.cardText}>Район Центральний</p>
               </div>
             </div>
-
-            <div className={styles.infoCard}>
-              <div className={styles.cardIcon}>
-                <Clock />
-              </div>
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>Режим роботи</h3>
-                <p className={styles.cardText}>
-                  {contactInfo.workingHours.weekdays}
-                </p>
-                <p className={styles.cardText}>
-                  {contactInfo.workingHours.weekend}
-                </p>
+            <div className={styles.mapContainer}>
+              <div className={styles.mapWrapper}>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2642.1208805921365!2d35.0372704!3d48.53091509999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d959cc38a83879%3A0xe26e803710fa4587!2sK24.kuzovnyy%20Tsentr!5e0!3m2!1sru!2sua!4v1760877404771!5m2!1sru!2sua"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="K24 Кузовний Центр на карті"
+                />
               </div>
             </div>
-          </div>
-
-          <div className={styles.socialLinks}>
-            <a
-              href={contactInfo.socialMedia.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.socialLink}
-            >
-              <Instagram />
-            </a>
-
-            <a
-              href={contactInfo.socialMedia.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.socialLink}
-            >
-              <Facebook />
-            </a>
-
-            <a
-              href={contactInfo.socialMedia.telegram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.socialLink}
-            >
-              <MessageCircle />
-            </a>
           </div>
         </div>
 
@@ -304,52 +225,6 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className={styles.formRow}>
-              <div className={styles.formGroup}>
-                <label htmlFor="email" className={styles.formLabel}>
-                  Email (необов&apos;язково)
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className={`${styles.formInput} ${
-                    errors.email ? styles.error : ""
-                  }`}
-                  placeholder="your@email.com"
-                />
-                {errors.email && (
-                  <div className={styles.errorMessage}>{errors.email}</div>
-                )}
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor="service" className={styles.formLabel}>
-                  Послуга *
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleInputChange}
-                  className={`${styles.formSelect} ${
-                    errors.service ? styles.error : ""
-                  }`}
-                >
-                  {services.map((service) => (
-                    <option key={service.value} value={service.value}>
-                      {service.label}
-                    </option>
-                  ))}
-                </select>
-                {errors.service && (
-                  <div className={styles.errorMessage}>{errors.service}</div>
-                )}
-              </div>
-            </div>
-
             <div className={styles.formGroup}>
               <label htmlFor="message" className={styles.formLabel}>
                 Додаткова інформація (необов&apos;язково)
@@ -375,15 +250,6 @@ export default function Contact() {
               {isSubmitting ? "Надсилаємо..." : "Надіслати заявку"}
             </Button>
           </form>
-        </div>
-      </div>
-
-      <div className={styles.mapSection}>
-        <h3 className={styles.mapTitle}>Як нас знайти</h3>
-        <div className={styles.mapContainer}>
-          Карта розташування СТО К24
-          <br />
-          {contactInfo.address}
         </div>
       </div>
     </Section>
