@@ -3,7 +3,7 @@ import {
   NextResponse,
 } from 'next/server';
 
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8375912165:AAH6hGtPkICLLhhlFrz3CRtySqvc75FOe9U';
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
 
 export async function POST(request: NextRequest) {
