@@ -102,6 +102,7 @@ export default function Contact() {
             variant="primary"
             size="large"
             onClick={() => setIsSubmitted(false)}
+            className={styles.againSubmitButton}
           >
             Надіслати ще одну заявку
           </Button>
