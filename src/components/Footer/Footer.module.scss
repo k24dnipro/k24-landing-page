@@ -30,19 +30,23 @@
   gap: 32px;
   flex-direction: row;
   justify-content: space-between;
+
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    flex-direction: column;
+    gap: 16px;
+  }
 }
 
 .brand {
   display: flex;
   gap: 32px;
-
-  @media (max-width: #{$breakpoint-sm - 1px}) {
-    text-align: center;
-  }
 }
 
 .logoImage {
   border-radius: 16px;
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    width: 245px;
+  }
 }
 
 .brandDescription {
@@ -53,6 +57,7 @@
 
   @media (max-width: #{$breakpoint-sm - 1px}) {
     max-width: none;
+    font-size: $font-size-sm;
   }
 }
 
@@ -183,33 +188,6 @@
       &:hover {
         color: $color-primary;
       }
-    }
-  }
-}
-
-.workingHours {
-  margin-top: 24px;
-  padding: 16px;
-  background: rgba($color-primary, 0.1);
-  border-radius: $border-radius-lg;
-  border: 1px solid rgba($color-primary, 0.2);
-
-  .hoursTitle {
-    font-size: $font-size-sm;
-    font-weight: $font-weight-semibold;
-    color: $color-primary;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .hoursItem {
-    color: rgba($color-white, 0.8);
-    font-size: $font-size-sm;
-    margin-bottom: 4px;
-
-    &:last-child {
-      margin-bottom: 0;
     }
   }
 }
