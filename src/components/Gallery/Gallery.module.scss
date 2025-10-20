@@ -158,15 +158,18 @@
 .beforeLabel,
 .afterLabel {
   position: absolute;
-  top: 16px;
-  padding: 4px 8px;
+  top: 12px;
+  padding: 2px 8px;
   background: rgba($color-secondary, 0.8);
   color: $color-white;
-  font-size: $font-size-xs;
+  font-size: 12px;
+  line-height: 1;
   font-weight: $font-weight-bold;
   border-radius: $border-radius-sm;
   backdrop-filter: blur(5px);
   z-index: 10;
+  pointer-events: none;
+  transition: opacity $transition-base, transform $transition-base;
 }
 
 .beforeLabel {
@@ -177,6 +180,17 @@
   right: 16px;
   background: rgba($color-primary, 0.9);
   color: $color-secondary;
+}
+
+// Hide labels while the user is interacting with the slider
+.comparisonSlider:hover .beforeLabel,
+.comparisonSlider:hover .afterLabel,
+.comparisonSlider:active .beforeLabel,
+.comparisonSlider:active .afterLabel,
+.comparisonSlider:focus-within .beforeLabel,
+.comparisonSlider:focus-within .afterLabel {
+  opacity: 0;
+  transform: translateY(-4px);
 }
 
 .itemContent {

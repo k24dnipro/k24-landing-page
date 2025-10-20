@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
-import "./globals.css";
-import Head from "next/head";
+import './globals.css';
+import type { Metadata } from 'next';
+import {
+  Inter,
+  Montserrat,
+} from 'next/font/google';
+import Head from 'next/head';
+import { GoogleTagManager } from '@next/third-parties/google';
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -16,7 +20,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "СТО К24 Дніпро - Професійний автосервіс повного циклу",
+  title: "К24 Дніпро - Професійний автосервіс повного циклу",
   description:
     "Професійний ремонт та обслуговування автомобілів у Дніпрі. Понад 15 років досвіду, кваліфіковані майстри, сучасне обладнання. Гарантія на всі роботи.",
   keywords:
@@ -80,6 +84,7 @@ export default function RootLayout({
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
+      <GoogleTagManager gtmId="GTM-NZGXCKQD" />
       <body>{children}</body>
     </html>
   );
