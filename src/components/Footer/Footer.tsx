@@ -31,15 +31,6 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleNavClick = (href: string) => {
-    if (href.startsWith("#")) {
-      const element = document.getElementById(href.slice(1));
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
   const currentYear = new Date().getFullYear();
 
   return (
