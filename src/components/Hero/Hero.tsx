@@ -21,7 +21,7 @@ export default function Hero() {
         <div className={styles.content}>
           <div className={styles.badge}>
             <CheckCircle className={styles.icon} />
-            12+ років досвіду в автосервісі
+            2+ років досвіду в автосервісі
           </div>
 
           <h1 className={styles.title}>
@@ -30,9 +30,9 @@ export default function Hero() {
           </h1>
 
           <p className={styles.subtitle}>
-            Професійний ремонт та обслуговування автомобілів будь-якої
-            складності. Гарантія якості, сучасне обладнання та кваліфіковані
-            майстри.
+            Професійне відновлення геометрії кузова та рихтування елементів
+            будь-якої складності. Гарантія якості, сучасне обладнання та
+            кваліфіковані майстри.
           </p>
 
           <div className={styles.actions}>

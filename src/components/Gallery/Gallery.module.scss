@@ -282,7 +282,7 @@
 
 .closeButton {
   position: absolute;
-  top: 24px;
+  top: 32px;
   right: 24px;
   width: 40px;
   height: 40px;
@@ -295,10 +295,17 @@
   justify-content: center;
   cursor: pointer;
   transition: all $transition-base;
+  z-index: 1000;
+  font-size: 18px;
+  font-weight: bold;
   
   &:hover {
     background: $color-secondary;
     transform: scale(1.1);
+  }
+  
+  &:active {
+    transform: scale(0.95);
   }
 }
 

@@ -10,7 +10,7 @@ import styles from './About.module.scss';
 
 export default function About() {
   const stats = [
-    { number: "12+", label: "Років досвіду" },
+    { number: "2+", label: "Років досвіду" },
     { number: "600+", label: "Відремонтованих авто" },
     { number: "98%", label: "Задоволених клієнтів" },
     { number: "24/7", label: "Підтримка клієнтів" },
@@ -71,7 +71,7 @@ export default function About() {
           <div className={styles.imageGrid}>
             <div className={`${styles.image} ${styles.large}`}>
               <Image
-                src="/images/about-1.jpeg"
+                src="/images/about-3.jpg"
                 width={400}
                 height={400}
                 alt="Image"
@@ -87,7 +87,7 @@ export default function About() {
             </div>
             <div className={styles.image}>
               <Image
-                src="/images/about-3.jpg"
+                src="/images/about-1.jpeg"
                 width={400}
                 height={400}
                 alt="Image"

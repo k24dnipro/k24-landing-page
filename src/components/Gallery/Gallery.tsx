@@ -18,40 +18,35 @@ export default function Gallery() {
 
   const filters = [
     { id: "all", label: "Всі роботи" },
-    { id: "engine", label: "Двигун" },
-    { id: "body", label: "Кузов" },
-    { id: "interior", label: "Салон" },
+    { id: "painting", label: "Фарбування" },
+    { id: "straightening", label: "Рихтовка" },
   ];
 
   const galleryImages: GalleryImage[] = [
     {
       id: "1",
-      title: "Відновлення двигуна BMW 3 Series",
-      category: "engine",
+      title: "Фарбування BMW 3 Series",
+      category: "painting",
       beforeImage: "/placeholder-before.jpg",
       afterImage: "/placeholder-after.jpg",
-      description:
-        "Повний капітальний ремонт двигуна з заміною поршневої групи та головки блоку циліндрів.",
+      description: "Повне фарбування кузова BMW 3 Series.",
     },
     {
       id: "2",
-      title: "Фарбування кузова Mercedes-Benz",
-      category: "body",
+      title: "Рихтовка Mercedes-Benz",
+      category: "straightening",
       beforeImage: "/placeholder-before.jpg",
       afterImage: "/placeholder-after.jpg",
-      description:
-        "Повне фарбування кузова після ДТП з відновленням геометрії.",
+      description: "Рихтовка Mercedes-Benz після ДТП.",
     },
     {
       id: "3",
-      title: "Реставрація салону Audi A6",
-      category: "interior",
+      title: "Фарбування Audi A6",
+      category: "painting",
       beforeImage: "/placeholder-before.jpg",
       afterImage: "/placeholder-after.jpg",
-      description:
-        "Повна реставрація шкіряних сидінь та оновлення панелі приладів.",
+      description: "Повне фарбування Audi A6.",
     },
-  
   ];
 
   const filteredImages =
@@ -127,20 +122,20 @@ export default function Gallery() {
               <ImgComparisonSlider className={styles.comparisonSlider}>
                 <div slot="first" className={styles.beforeImage}>
                   <div className={styles.beforeLabel}>ДО</div>
-                  <Image 
-                    src={image.beforeImage} 
+                  <Image
+                    src={image.beforeImage}
                     alt={`До: ${image.title}`}
                     fill
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: "cover" }}
                   />
                 </div>
                 <div slot="second" className={styles.afterImage}>
                   <div className={styles.afterLabel}>ПІСЛЯ</div>
-                  <Image 
-                    src={image.afterImage} 
+                  <Image
+                    src={image.afterImage}
                     alt={`Після: ${image.title}`}
                     fill
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: "cover" }}
                   />
                 </div>
               </ImgComparisonSlider>
@@ -175,7 +170,16 @@ export default function Gallery() {
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <button className={styles.closeButton} onClick={closeModal}>
+            <button 
+              className={styles.closeButton} 
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                closeModal();
+              }}
+              type="button"
+              aria-label="Close modal"
+            >
               ✕
             </button>
 
@@ -183,20 +187,20 @@ export default function Gallery() {
               <ImgComparisonSlider className={styles.comparisonSlider}>
                 <div slot="first" className={styles.beforeImage}>
                   <div className={styles.beforeLabel}>ДО</div>
-                  <Image 
-                    src={selectedImage.beforeImage} 
+                  <Image
+                    src={selectedImage.beforeImage}
                     alt={`До: ${selectedImage.title}`}
                     fill
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: "cover" }}
                   />
                 </div>
                 <div slot="second" className={styles.afterImage}>
                   <div className={styles.afterLabel}>ПІСЛЯ</div>
-                  <Image 
-                    src={selectedImage.afterImage} 
+                  <Image
+                    src={selectedImage.afterImage}
                     alt={`Після: ${selectedImage.title}`}
                     fill
-                    style={{ objectFit: 'cover' }}
+                    style={{ objectFit: "cover" }}
                   />
                 </div>
               </ImgComparisonSlider>
