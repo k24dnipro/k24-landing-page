@@ -13,7 +13,7 @@
     135deg,
     rgb(0 0 0 / 90%) 0%,
     rgba(0, 0, 0, 0.794) 50%,
-    rgba(20, 19, 8, 0.751) 100%
+    rgba(20, 19, 8, 0.814) 100%
   );
   overflow: hidden;
 
@@ -31,9 +31,9 @@
     bottom: 0;
     background: linear-gradient(
       135deg,
-      rgba($color-secondary, 0.8) 0%,
-      rgba($color-secondary, 0.6) 50%,
-      rgba($color-primary, 0.1) 100%
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgb(22 21 5 / 76%) 100%
     );
     z-index: 2;
   }
@@ -47,6 +47,7 @@
   height: 100%;
   object-fit: cover;
   z-index: 1;
+  filter: brightness(0.8);
 }
 
 .container {
