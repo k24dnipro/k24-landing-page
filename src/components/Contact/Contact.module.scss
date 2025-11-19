@@ -79,6 +79,9 @@
       color: $color-gray-dark;
       line-height: 1.6;
       margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
 
       &:last-child {
         margin-bottom: 0;

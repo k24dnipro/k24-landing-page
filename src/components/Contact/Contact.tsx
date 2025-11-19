@@ -37,7 +37,8 @@ export default function Contact() {
   });
 
   const contactInfo: ContactInfo = {
-    phone: "+38 (067) 123-45-67",
+    phone: "+38 (098) 777-44-01",
+    phones: ["+38 (098) 777-44-01", "+38 (097) 959-05-05"],
     email: "info@k24dnipro.com",
     address:
       "вулиця Нижньодніпровська, Дніпро, Дніпропетровська область, 49000",
@@ -128,14 +129,24 @@ export default function Contact() {
               </div>
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>Телефон</h3>
-                <p className={styles.cardText}>
-                  <a
-                    href={`tel:${contactInfo.phone.replace(/[\s\-\(\)]/g, "")}`}
-                    className={styles.cardLink}
-                  >
-                    {contactInfo.phone}
-                  </a>
-                </p>
+                <div className={styles.cardText}>
+                  {contactInfo.phones?.map((phone, index) => (
+                    <a
+                      key={index}
+                      href={`tel:${phone.replace(/[\s\-\(\)]/g, "")}`}
+                      className={styles.cardLink}
+                    >
+                      {phone}
+                    </a>
+                  )) || (
+                    <a
+                      href={`tel:${contactInfo.phone.replace(/[\s\-\(\)]/g, "")}`}
+                      className={styles.cardLink}
+                    >
+                      {contactInfo.phone}
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
 

@@ -34,6 +34,7 @@ export interface Review {
 
 export interface ContactInfo {
   phone: string;
+  phones?: string[];
   email: string;
   address: string;
   workingHours: {
