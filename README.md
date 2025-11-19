@@ -213,7 +213,7 @@ const contactInfo: ContactInfo = {
 ## 📄 Ліцензія
 
 Цей проєкт є приватним та належить K24 Кузовний Центр.
-Контакти розробки: Katerenchuk Olekrandr. 
+Контакти розробки: Katerenchuk Olekrandr;
 +380634852179 |
 oleksandrkaterenchuk12@gmail.com
 
