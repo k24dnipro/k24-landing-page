@@ -47,8 +47,9 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 480px));
   gap: 32px;
+  justify-content: center;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
     grid-template-columns: 1fr;
@@ -74,20 +75,42 @@
 
 .imageContainer {
   position: relative;
-  height: 250px;
+  height: 400px;
   overflow: hidden;
   
   @media (max-width: #{$breakpoint-sm - 1px}) {
-    height: 200px;
+    height: 300px;
   }
 }
 
 .comparisonSlider {
   width: 100%;
   height: 100%;
-  --divider-width: 4px;
-  --divider-color: #{$color-primary};
-  --default-handle-opacity: 1;
+  position: relative;
+  
+  // Customize the slider handle and divider
+  :global([data-rcs-handle]) {
+    background: $color-primary;
+    border: 3px solid $color-white;
+    box-shadow: $shadow-md;
+  }
+  
+  :global([data-rcs-handle]::after) {
+    content: '⟷';
+    color: $color-secondary;
+    font-weight: $font-weight-bold;
+  }
+  
+  :global([data-rcs-line]) {
+    background: $color-primary;
+    width: 4px;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .imageComparison {
@@ -106,6 +129,13 @@
   img {
     object-fit: cover;
   }
+}
+
+.comparisonImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .slider {

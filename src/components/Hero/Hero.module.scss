@@ -49,7 +49,7 @@
   z-index: 1;
   filter: brightness(0.8);
   @media (max-width: #{$breakpoint-sm - 1px}) {
-    filter: brightness(0.7);
+    filter: brightness(0.6);
   }
 }
 

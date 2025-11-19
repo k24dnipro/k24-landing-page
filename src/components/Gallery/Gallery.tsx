@@ -5,10 +5,10 @@ import {
   useState,
 } from 'react';
 import Image from 'next/image';
+import { ReactCompareSlider } from 'react-compare-slider';
 import Button from '@/components/Button/Button';
 import Section from '@/components/Section/Section';
 import { GalleryImage } from '@/types';
-import { ImgComparisonSlider } from '@img-comparison-slider/react';
 import styles from './Gallery.module.scss';
 
 export default function Gallery() {
@@ -18,35 +18,21 @@ export default function Gallery() {
 
   const filters = [
     { id: "all", label: "Всі роботи" },
-    { id: "painting", label: "Фарбування" },
+    // { id: "painting", label: "Фарбування" },
     { id: "straightening", label: "Рихтовка" },
   ];
 
   const galleryImages: GalleryImage[] = [
-    {
-      id: "1",
-      title: "Фарбування BMW 3 Series",
-      category: "painting",
-      beforeImage: "/placeholder-before.jpg",
-      afterImage: "/placeholder-after.jpg",
-      description: "Повне фарбування кузова BMW 3 Series.",
-    },
+
     {
       id: "2",
-      title: "Рихтовка Mercedes-Benz",
+      title: "Рихтовка Shkoda Octavia",
       category: "straightening",
-      beforeImage: "/placeholder-before.jpg",
-      afterImage: "/placeholder-after.jpg",
-      description: "Рихтовка Mercedes-Benz після ДТП.",
+      beforeImage: "/gallery/before2.png",
+      afterImage: "/gallery/after2.png",
+      description: "Рихтовка Shkoda Octavia після ДТП.",
     },
-    {
-      id: "3",
-      title: "Фарбування Audi A6",
-      category: "painting",
-      beforeImage: "/placeholder-before.jpg",
-      afterImage: "/placeholder-after.jpg",
-      description: "Повне фарбування Audi A6.",
-    },
+
   ];
 
   const filteredImages =
@@ -119,26 +105,33 @@ export default function Gallery() {
             onClick={() => openModal(image)}
           >
             <div className={styles.imageContainer}>
-              <ImgComparisonSlider className={styles.comparisonSlider}>
-                <div slot="first" className={styles.beforeImage}>
-                  <div className={styles.beforeLabel}>ДО</div>
-                  <Image
-                    src={image.beforeImage}
-                    alt={`До: ${image.title}`}
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <div slot="second" className={styles.afterImage}>
-                  <div className={styles.afterLabel}>ПІСЛЯ</div>
-                  <Image
-                    src={image.afterImage}
-                    alt={`Після: ${image.title}`}
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-              </ImgComparisonSlider>
+              <div className={styles.beforeLabel}>ДО</div>
+              <div className={styles.afterLabel}>ПІСЛЯ</div>
+              <ReactCompareSlider
+                itemOne={
+                  <div className={styles.imageWrapper}>
+                    <Image
+                      src={image.beforeImage}
+                      alt={`До: ${image.title}`}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
+                }
+                itemTwo={
+                  <div className={styles.imageWrapper}>
+                    <Image
+                      src={image.afterImage}
+                      alt={`Після: ${image.title}`}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
+                }
+                className={styles.comparisonSlider}
+              />
             </div>
 
             <div className={styles.itemContent}>
@@ -170,8 +163,8 @@ export default function Gallery() {
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
-              className={styles.closeButton} 
+            <button
+              className={styles.closeButton}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -184,26 +177,33 @@ export default function Gallery() {
             </button>
 
             <div className={styles.imageContainer}>
-              <ImgComparisonSlider className={styles.comparisonSlider}>
-                <div slot="first" className={styles.beforeImage}>
-                  <div className={styles.beforeLabel}>ДО</div>
-                  <Image
-                    src={selectedImage.beforeImage}
-                    alt={`До: ${selectedImage.title}`}
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <div slot="second" className={styles.afterImage}>
-                  <div className={styles.afterLabel}>ПІСЛЯ</div>
-                  <Image
-                    src={selectedImage.afterImage}
-                    alt={`Після: ${selectedImage.title}`}
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-              </ImgComparisonSlider>
+              <div className={styles.beforeLabel}>ДО</div>
+              <div className={styles.afterLabel}>ПІСЛЯ</div>
+              <ReactCompareSlider
+                itemOne={
+                  <div className={styles.imageWrapper}>
+                    <Image
+                      src={selectedImage.beforeImage}
+                      alt={`До: ${selectedImage.title}`}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="90vw"
+                    />
+                  </div>
+                }
+                itemTwo={
+                  <div className={styles.imageWrapper}>
+                    <Image
+                      src={selectedImage.afterImage}
+                      alt={`Після: ${selectedImage.title}`}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="90vw"
+                    />
+                  </div>
+                }
+                className={styles.comparisonSlider}
+              />
             </div>
 
             <div className={styles.modalInfo}>
