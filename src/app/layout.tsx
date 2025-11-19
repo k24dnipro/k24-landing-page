@@ -154,6 +154,10 @@ export default function RootLayout({
   return (
     <html lang="uk" className={`${inter.variable} ${montserrat.variable}`}>
       <Head>
+        <meta
+          name="google-site-verification"
+          content="6CgpA_BjgUm2xjXolSi_rzuzNtxvT4Xcbm2iE0_FmzY"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <GoogleTagManager gtmId="GTM-NZGXCKQD" />
