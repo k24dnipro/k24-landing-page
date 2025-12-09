@@ -23,16 +23,30 @@ export default function Gallery() {
   ];
 
   const galleryImages: GalleryImage[] = [
-
     {
       id: "2",
-      title: "Рихтовка Shkoda Octavia",
+      title: "Рихтовка Škoda Octavia",
       category: "straightening",
       beforeImage: "/gallery/before2.png",
       afterImage: "/gallery/after2.png",
-      description: "Рихтовка Shkoda Octavia після ДТП.",
+      description: "Рихтовка Škoda Octavia після ДТП.",
     },
-
+    {
+      id: "3",
+      title: "Рихтовка BMW I4 M50",
+      category: "straightening",
+      beforeImage: "/gallery/before3.jpg",
+      afterImage: "/gallery/after3.jpg",
+      description: "Рихтовка BMW I4 M50 після ДТП.",
+    },
+    {
+      id: "1",
+      title: "Рихтовка Volkswagen Passat",
+      category: "straightening",
+      beforeImage: "/gallery/before1.png",
+      afterImage: "/gallery/after1.jpg",
+      description: "Рихтовка Volkswagen Passat після ДТП.",
+    },
   ];
 
   const filteredImages =
