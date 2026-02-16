@@ -4,6 +4,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NavigationItem } from '@/types';
@@ -16,6 +17,7 @@ const navigationItems: NavigationItem[] = [
   { id: "gallery", label: "Галерея", href: "#gallery" },
   { id: "reviews", label: "Відгуки", href: "#reviews" },
   { id: "contact", label: "Контакти", href: "#contact" },
+  { id: "parts", label: "Запчастини", href: "https://k24.parts" },
 ];
 
 export default function Header() {
@@ -24,6 +26,11 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("home");
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,11 +94,21 @@ export default function Header() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <header
-      className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${
-        !isVisible ? styles.hidden : ""
-      }`}
+      className={`${styles.header} ${isScrolled ? styles.scrolled : ""} ${!isVisible ? styles.hidden : ""
+        }`}
     >
       <div className={styles.container}>
         <Link href="/" onClick={() => handleNavClick("#home")}>
@@ -106,18 +123,30 @@ export default function Header() {
         </Link>
 
         <nav className={styles.nav}>
-          {navigationItems.map((item) => (
-            <Link
-              key={item.id}
-              href={item.href}
-              className={`${styles.navLink} ${
-                activeSection === item.id ? styles.active : ""
-              }`}
-              onClick={() => handleNavClick(item.href)}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigationItems.map((item) =>
+            item.href.startsWith("http") ? (
+              <a
+                key={item.id}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.navLink}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.id}
+                href={item.href}
+                className={`${styles.navLink} ${activeSection === item.id ? styles.active : ""
+                  }`}
+                onClick={() => handleNavClick(item.href)}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
 
         <div className={styles.contactInfo}>
@@ -136,9 +165,8 @@ export default function Header() {
           aria-label="Toggle mobile menu"
         >
           <div
-            className={`${styles.hamburger} ${
-              isMobileMenuOpen ? styles.open : ""
-            }`}
+            className={`${styles.hamburger} ${isMobileMenuOpen ? styles.open : ""
+              }`}
           >
             <span></span>
             <span></span>
@@ -146,27 +174,111 @@ export default function Header() {
           </div>
         </button>
 
-        <div
-          className={`${styles.mobileMenu} ${
-            isMobileMenuOpen ? styles.open : ""
-          }`}
-        >
-          <ul className={styles.mobileNavList}>
-            {navigationItems.map((item) => (
-              <li key={item.id}>
-                <Link
-                  href={item.href}
-                  className={`${styles.mobileNavLink} ${
-                    activeSection === item.id ? styles.active : ""
+        {/* Mobile menu: render in body so fixed positioning is relative to viewport (header has transform) */}
+        {isMounted &&
+          createPortal(
+            <>
+              <div
+                className={`${styles.mobileMenuOverlay} ${isMobileMenuOpen ? styles.open : ""
                   }`}
-                  onClick={() => handleNavClick(item.href)}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+                onClick={toggleMobileMenu}
+                aria-hidden={!isMobileMenuOpen}
+              />
+              <div
+                className={`${styles.mobileMenuPanel} ${isMobileMenuOpen ? styles.open : ""
+                  }`}
+                aria-modal="true"
+                aria-label="Меню"
+              >
+                <div className={styles.mobileMenuHeader}>
+                  <Link
+                    href="/"
+                    className={styles.mobileMenuLogo}
+                    onClick={() => handleNavClick("#home")}
+                  >
+                    <Image
+                      src="/logo.png"
+                      alt="K24"
+                      width={44}
+                      height={44}
+                      sizes="44px"
+                      className={styles.mobileMenuLogoImage}
+                    />
+
+                  </Link>
+                  <button
+                    type="button"
+                    className={styles.mobileMenuClose}
+                    onClick={toggleMobileMenu}
+                    aria-label="Закрити меню"
+                  >
+                    <span aria-hidden>×</span>
+                  </button>
+                </div>
+
+                <nav className={styles.mobileMenuNav}>
+                  <ul className={styles.mobileNavList}>
+                    {navigationItems.map((item, index) => (
+                      <li
+                        key={item.id}
+                        className={styles.mobileNavItem}
+                        style={
+                          isMobileMenuOpen
+                            ? { animationDelay: `${60 + index * 40}ms` }
+                            : undefined
+                        }
+                      >
+                        {item.href.startsWith("http") ? (
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.mobileNavLink}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {item.label}
+                          </a>
+                        ) : (
+                          <Link
+                            href={item.href}
+                            className={`${styles.mobileNavLink} ${activeSection === item.id ? styles.active : ""
+                              }`}
+                            onClick={() => handleNavClick(item.href)}
+                          >
+                            {item.label}
+                          </Link>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+
+                <p className={styles.mobileMenuDescription}>
+                  Професійне відновлення геометрії кузова та рихтування елементів
+                  будь-якої складності. Гарантія якості, сучасне обладнання та
+                  кваліфіковані майстри.
+                </p>
+
+                <div className={styles.mobileMenuActions}>
+                  <Link
+                    href="#contact"
+                    className={styles.mobileMenuCtaPrimary}
+                    onClick={() => handleNavClick("#contact")}
+                  >
+                    Записатися на ремонт
+                  </Link>
+                  <Link
+                    href="#services"
+                    className={styles.mobileMenuCtaSecondary}
+                    onClick={() => handleNavClick("#services")}
+                  >
+                    Наші послуги
+                  </Link>
+                </div>
+              </div>
+            </>,
+            document.body
+          )}
       </div>
     </header>
   );

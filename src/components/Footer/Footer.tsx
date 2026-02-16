@@ -101,6 +101,17 @@ export default function Footer() {
             >
               <Music2 />
             </a>
+            <div className={styles.footerPartsBlock}>
+              <span className={styles.footerPartsLabel}>Запчастини для авто —</span>
+              <a
+                href="https://k24.parts"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.footerPartsLink}
+              >
+                k24.parts
+              </a>
+            </div>
           </div>
           <div className={styles.copyright}>
             © {currentYear} СТО К24 Dnipro. Всі права захищені.

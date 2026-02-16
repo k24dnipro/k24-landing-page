@@ -5,7 +5,7 @@
   min-height: 100vh;
   width: 100%;
   margin-top: -70px; /* Offset the body padding to make hero full height */
-  padding-top: 70px; /* Add padding to account for header */
+  padding-top: calc(70px + env(safe-area-inset-top, 0));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,7 +19,7 @@
 
   @media (max-width: #{$breakpoint-sm - 1px}) {
     margin-top: -60px; /* Offset the body padding for mobile */
-    padding-top: 60px; /* Add padding to account for mobile header */
+    padding-top: calc(60px + env(safe-area-inset-top, 0));
   }
 
   &::after {

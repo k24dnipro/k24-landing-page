@@ -73,6 +73,31 @@
   }
 }
 
+.footerPartsBlock {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.footerPartsLabel {
+  color: rgba($color-white, 0.7);
+  font-size: $font-size-sm;
+}
+
+.footerPartsLink {
+  color: $color-primary;
+  text-decoration: none;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary-light;
+    text-decoration: underline;
+  }
+}
+
 .socialLink {
   width: 45px;
   height: 45px;

@@ -11,6 +11,9 @@
   transition: transform 0.3s ease-in-out, background-color 0.3s ease,
     box-shadow 0.3s ease;
   transform: translateY(0);
+  padding-top: env(safe-area-inset-top, 0);
+  padding-left: env(safe-area-inset-left, 0);
+  padding-right: env(safe-area-inset-right, 0);
 
   &.scrolled {
     background-color: rgba(18, 18, 18, 0.98);
@@ -31,15 +34,20 @@
   align-items: center;
   justify-content: space-between;
   min-height: 70px;
+  box-sizing: border-box;
 
   @media (max-width: #{$breakpoint-sm - 1px}) {
     min-height: 60px;
-    padding: 8px 16px;
+    padding: 12px 16px;
+    padding-left: max(16px, env(safe-area-inset-left, 0));
+    padding-right: max(16px, env(safe-area-inset-right, 0));
   }
 }
 
 .logoImage {
   border-radius: 16px;
+  display: block;
+  flex-shrink: 0;
 }
 
 .nav {
@@ -135,54 +143,263 @@
   }
 }
 
-.mobileMenu {
-  position: absolute;
-  top: 100%;
+// ——— Mobile menu: overlay (full screen) ———
+.mobileMenuOverlay {
+  @media (min-width: $breakpoint-lg) {
+    display: none;
+  }
+
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(18, 18, 18, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 24px 0;
-  transform: translateY(-100%);
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  z-index: $z-modal - 1;
+  background: rgba($color-secondary, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   opacity: 0;
   visibility: hidden;
-  transition: all $transition-base;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 
   &.open {
-    transform: translateY(0);
     opacity: 1;
     visibility: visible;
   }
+}
 
-  .mobileNavList {
-    max-width: $container-max-width;
-    margin: 0 auto;
-    padding: 0 $container-padding;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    list-style: none;
-
-    @media (max-width: #{$breakpoint-sm - 1px}) {
-      padding: 0 16px;
-    }
+// ——— Mobile menu: slide-in panel (full height) ———
+.mobileMenuPanel {
+  @media (min-width: $breakpoint-lg) {
+    display: none;
   }
 
-  .mobileNavLink {
-    color: $color-white;
-    font-weight: $font-weight-medium;
-    font-size: $font-size-lg;
-    padding: 16px;
-    border-radius: $border-radius-md;
-    transition: all $transition-base;
-    text-align: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  z-index: $z-modal;
+  width: min(100vw, 360px);
+  max-width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: linear-gradient(
+    180deg,
+    $color-secondary 0%,
+    $color-secondary-light 100%
+  );
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 20px 32px;
+  padding-top: max(24px, env(safe-area-inset-top, 0));
+  padding-right: max(20px, env(safe-area-inset-right, 0));
+  padding-bottom: max(32px, env(safe-area-inset-bottom, 0));
+  padding-left: max(20px, env(safe-area-inset-left, 0));
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 
-    &:hover,
-    &.active {
-      color: $color-primary;
-      background-color: rgba($color-primary, 0.1);
-    }
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+.mobileMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-shrink: 0;
+}
+
+.mobileMenuLogo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.mobileMenuLogoImage {
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.mobileMenuLogoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  gap: 0;
+}
+
+.mobileMenuLogoBrand {
+  font-weight: $font-weight-bold;
+  font-size: $font-size-xl;
+  color: $color-primary;
+  letter-spacing: 0.02em;
+}
+
+.mobileMenuLogoCity {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: rgba($color-white, 0.85);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.mobileMenuClose {
+  width: 44px;
+  height: 44px;
+  border-radius: $border-radius-lg;
+  border: 2px solid rgba($color-white, 0.2);
+  background: rgba($color-white, 0.08);
+  color: $color-white;
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background $transition-base, border-color $transition-base,
+    color $transition-base;
+
+  &:hover {
+    background: $color-primary;
+    border-color: $color-primary;
+    color: $color-secondary;
+  }
+
+  span {
+    margin-top: -2px;
+  }
+}
+
+.mobileMenuNav {
+  flex: 0 0 auto;
+  margin-bottom: 24px;
+}
+
+.mobileNavList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mobileNavItem {
+  animation: mobileNavItemIn 0.4s ease backwards;
+}
+
+@keyframes mobileNavItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobileNavLink {
+  display: block;
+  padding: 14px 18px;
+  color: rgba($color-white, 0.95);
+  font-weight: $font-weight-medium;
+  font-size: $font-size-base;
+  text-decoration: none;
+  border-radius: $border-radius-xl;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover {
+    background: rgba($color-white, 0.08);
+    color: $color-white;
+  }
+
+  &.active {
+    background: rgba($color-primary, 0.2);
+    color: $color-primary;
+    font-weight: $font-weight-semibold;
+    box-shadow: 0 0 0 1px rgba($color-primary, 0.3);
+  }
+}
+
+.mobileMenuDescription {
+  font-size: $font-size-sm;
+  line-height: 1.6;
+  color: rgba($color-white, 0.7);
+  margin: 0 0 28px;
+  padding: 20px 0;
+  border-top: 1px solid rgba($color-white, 0.1);
+  border-bottom: 1px solid rgba($color-white, 0.1);
+  flex-shrink: 0;
+}
+
+.mobileMenuActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 8px;
+  flex-shrink: 0;
+}
+
+.mobileMenuCtaPrimary {
+  display: block;
+  width: 100%;
+  padding: 16px 24px;
+  background: $color-primary;
+  color: $color-secondary;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-base;
+  text-align: center;
+  text-decoration: none;
+  border-radius: $border-radius-xl;
+  transition: background $transition-base, transform $transition-base,
+    box-shadow $transition-base;
+
+  &:hover {
+    background: $color-primary-light;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba($color-primary, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.mobileMenuCtaSecondary {
+  display: block;
+  width: 100%;
+  padding: 14px 24px;
+  background: transparent;
+  color: $color-white;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid rgba($color-white, 0.35);
+  border-radius: $border-radius-xl;
+  transition: border-color $transition-base, background $transition-base,
+    color $transition-base;
+
+  &:hover {
+    border-color: $color-white;
+    background: rgba($color-white, 0.08);
+    color: $color-white;
   }
 }
 

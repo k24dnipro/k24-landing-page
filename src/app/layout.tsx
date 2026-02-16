@@ -158,7 +158,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="6CgpA_BjgUm2xjXolSi_rzuzNtxvT4Xcbm2iE0_FmzY"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
       </Head>
       <GoogleTagManager gtmId="GTM-NZGXCKQD" />
       <body>
