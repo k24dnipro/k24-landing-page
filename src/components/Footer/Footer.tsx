@@ -73,7 +73,7 @@ export default function Footer() {
               <div className={styles.contactItem}>
                 <MapPin className={styles.contactIcon} />
                 <div className={styles.contactText}>
-                  вул. Нижньодніпровська, Дніпро, 49000
+                  52005, Слобожанське, вул. Василя Сухомлинського 80А
                 </div>
               </div>
             </div>

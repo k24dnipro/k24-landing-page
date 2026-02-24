@@ -41,7 +41,7 @@ export default function Contact() {
     phones: ["+38 (098) 777-44-01", "+38 (097) 959-05-05"],
     email: "info@k24dnipro.com",
     address:
-      "вулиця Нижньодніпровська, Дніпро, Дніпропетровська область, 49000",
+      "52005, Слобожанське, вул. Василя Сухомлинського 80А",
     workingHours: {
       weekdays: "Пн-Пт: 08:00 - 20:00",
       weekend: "Сб-Нд: 09:00 - 18:00",
@@ -162,7 +162,7 @@ export default function Contact() {
             <div className={styles.mapContainer}>
               <div className={styles.mapWrapper}>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2642.1208805921365!2d35.0372704!3d48.53091509999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d959cc38a83879%3A0xe26e803710fa4587!2sK24.kuzovnyy%20Tsentr!5e0!3m2!1sru!2sua!4v1760877404771!5m2!1sru!2sua"
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2641.7837941635235!2d35.065135999999995!3d48.537375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDjCsDMyJzE0LjYiTiAzNcKwMDMnNTQuNSJF!5e0!3m2!1sru!2sua!4v1771945022029!5m2!1sru!2sua"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
