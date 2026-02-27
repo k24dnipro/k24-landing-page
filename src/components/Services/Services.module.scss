@@ -36,18 +36,19 @@
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 32px;
   margin-top: 64px;
 
   @media (max-width: #{$breakpoint-sm - 1px}) {
-    grid-template-columns: 1fr;
     gap: 24px;
   }
 }
 
 .serviceCard {
+  flex: 0 0 calc((100% - 64px) / 3); /* 3 колонки на десктопі */
   background: rgba($color-white, 0.05);
   border: 1px solid rgba($color-primary, 0.2);
   border-radius: $border-radius-2xl;
@@ -58,6 +59,14 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: #{$breakpoint-lg - 1px}) {
+    flex: 0 0 calc((100% - 32px) / 2); /* 2 колонки на планшетах */
+  }
+
+  @media (max-width: #{$breakpoint-sm - 1px}) {
+    flex: 0 0 100%; /* 1 колонка на мобільних */
+  }
 
   &::before {
     content: "";
