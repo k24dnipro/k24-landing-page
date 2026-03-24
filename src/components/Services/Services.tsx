@@ -165,7 +165,7 @@ export default function Services() {
             <Button variant="primary" size="large" href="#contact">
               Консультація спеціаліста
             </Button>
-            <Button variant="outline" size="large" href="tel:+380987774401">
+            <Button variant="outline" size="large" href="tel:+380939590505">
               Подзвонити зараз
             </Button>
           </div>

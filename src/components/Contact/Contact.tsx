@@ -37,8 +37,8 @@ export default function Contact() {
   });
 
   const contactInfo: ContactInfo = {
-    phone: "+38 (098) 777-44-01",
-    phones: ["+38 (098) 777-44-01", "+38 (097) 959-05-05"],
+    phone: "+38 (093) 959-05-05",
+    phones: ["+38 (093) 959-05-05"],
     email: "info@k24dnipro.com",
     address:
       "52005, Слобожанське, вул. Василя Сухомлинського 80А",

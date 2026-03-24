@@ -65,8 +65,7 @@ export default function Footer() {
               <div className={styles.contactItem}>
                 <Phone className={styles.contactIcon} />
                 <div className={styles.contactText}>
-                  <a href="tel:+380987774401">+38 (098) 777-44-01</a>
-                  <a href="tel:+380979590505">+38 (097) 959-05-05</a>
+                  <a href="tel:+380939590505">+38 (093) 959-05-05</a>
                 </div>
               </div>
 
