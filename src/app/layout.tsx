@@ -163,6 +163,16 @@ export default function RootLayout({
       <GoogleTagManager gtmId="GTM-NZGXCKQD" />
       <body>
         <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `(function(d, w, s) {
+            var widgetHash = 'symimwg3ea8ignz1lr8k', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
+            gcw.src = '//widgets.binotel.com/getcall/widgets/'+ widgetHash +'.js';
+            var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
+          })(document, window, 'script');`,
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
