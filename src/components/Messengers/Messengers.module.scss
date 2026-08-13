@@ -1,0 +1,103 @@
+@use "../../styles/variables" as *;
+
+.messengersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.phoneLink {
+  color: inherit;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-base;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.linksGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.messengerLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: $border-radius-lg;
+  text-decoration: none;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: #ffffff;
+  transition: all $transition-base;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.08);
+  }
+
+  &.telegram {
+    background-color: #0088cc;
+  }
+
+  &.whatsapp {
+    background-color: #25d366;
+  }
+
+  &.viber {
+    background-color: #7360f2;
+  }
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.messengerIconImg {
+  object-fit: contain;
+  display: block;
+}
+
+.name {
+  line-height: 1;
+}
+
+/* Variants */
+.icons {
+  .linksGroup {
+    gap: 8px;
+  }
+
+  .messengerLink {
+    padding: 8px;
+    border-radius: 50%;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.list {
+  .linksGroup {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .messengerLink {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+}

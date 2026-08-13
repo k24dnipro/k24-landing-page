@@ -35,6 +35,10 @@ export interface Review {
 export interface ContactInfo {
   phone: string;
   phones?: string[];
+  messengerPhone?: string;
+  telegramUrl?: string;
+  whatsappUrl?: string;
+  viberUrl?: string;
   email: string;
   address: string;
   workingHours: {

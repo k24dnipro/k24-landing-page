@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Messengers from '@/components/Messengers/Messengers';
 import styles from './Footer.module.scss';
 
 export default function Footer() {
@@ -74,6 +75,11 @@ export default function Footer() {
                 <div className={styles.contactText}>
                   52005, Слобожанське, вул. Василя Сухомлинського 80А
                 </div>
+              </div>
+
+              <div className={styles.footerMessengersBlock}>
+                <span className={styles.footerMessengersTitle}>Месенджери:</span>
+                <Messengers variant="badges" />
               </div>
             </div>
           </div>

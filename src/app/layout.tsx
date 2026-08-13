@@ -6,6 +6,7 @@ import {
 } from 'next/font/google';
 import Head from 'next/head';
 import { GoogleTagManager } from '@next/third-parties/google';
+import FloatingMessengers from '@/components/FloatingMessengers/FloatingMessengers';
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -102,7 +103,7 @@ export default function RootLayout({
     description:
       "Професійний автосервіс у Дніпрі: рихтування, рихтовка, полірування та фарбування автомобілів. Понад 2 роки досвіду, кваліфіковані майстри, сучасне обладнання.",
     url: "https://k24.dp.ua",
-    telephone: ["+38 (093) 959-05-05"],
+    telephone: ["+38 (093) 959-05-05", "+38 (093) 650-80-52"],
     address: {
       "@type": "PostalAddress",
       streetAddress: "вул. Василя Сухомлинського 80А",
@@ -177,6 +178,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         {children}
+        <FloatingMessengers />
       </body>
     </html>
   );

@@ -8,6 +8,7 @@ import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NavigationItem } from '@/types';
+import Messengers from '@/components/Messengers/Messengers';
 import styles from './Header.module.scss';
 
 const navigationItems: NavigationItem[] = [
@@ -260,6 +261,7 @@ export default function Header() {
                 </p>
 
                 <div className={styles.mobileMenuActions}>
+                  <Messengers variant="badges" />
                   <Link
                     href="#contact"
                     className={styles.mobileMenuCtaPrimary}

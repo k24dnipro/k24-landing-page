@@ -4,10 +4,12 @@ import { useState } from 'react';
 import {
   CheckCircle,
   MapPin,
+  MessageCircle,
   Phone,
 } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import Button from '@/components/Button/Button';
+import Messengers from '@/components/Messengers/Messengers';
 import Section from '@/components/Section/Section';
 import { ContactInfo } from '@/types';
 import styles from './Contact.module.scss';
@@ -39,6 +41,7 @@ export default function Contact() {
   const contactInfo: ContactInfo = {
     phone: "+38 (093) 959-05-05",
     phones: ["+38 (093) 959-05-05"],
+    messengerPhone: "+38 (093) 650-80-52",
     email: "info@k24dnipro.com",
     address:
       "52005, Слобожанське, вул. Василя Сухомлинського 80А",
@@ -146,6 +149,18 @@ export default function Contact() {
                       {contactInfo.phone}
                     </a>
                   )}
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.infoCard}>
+              <div className={styles.cardIcon}>
+                <MessageCircle />
+              </div>
+              <div className={styles.cardContent}>
+                <h3 className={styles.cardTitle}>Месенджери (Viber, WhatsApp, Telegram)</h3>
+                <div className={styles.cardText}>
+                  <Messengers variant="badges" />
                 </div>
               </div>
             </div>
