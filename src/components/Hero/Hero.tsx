@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 import Button from '@/components/Button/Button';
 import styles from './Hero.module.scss';
 
@@ -20,8 +20,8 @@ export default function Hero() {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.badge}>
-            <CheckCircle className={styles.icon} />
-            2+ років досвіду в автосервісі
+            <ShieldCheck className={styles.icon} />
+            <span><strong>2+ років</strong> досвіду в автосервісі</span>
           </div>
 
           <h1 className={styles.title}>
