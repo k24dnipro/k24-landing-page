@@ -5,7 +5,7 @@ import {
   Montserrat,
 } from 'next/font/google';
 import Head from 'next/head';
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import FloatingMessengers from '@/components/FloatingMessengers/FloatingMessengers';
 
 const inter = Inter({
@@ -161,7 +161,7 @@ export default function RootLayout({
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
       </Head>
-      <GoogleTagManager gtmId="GTM-NZGXCKQD" />
+      <GoogleAnalytics gaId="AW-18389090771" />
       <body>
         <script
           type="text/javascript"
