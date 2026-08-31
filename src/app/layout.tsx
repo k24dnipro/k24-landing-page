@@ -4,8 +4,7 @@ import {
   Inter,
   Montserrat,
 } from 'next/font/google';
-import Head from 'next/head';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import FloatingMessengers from '@/components/FloatingMessengers/FloatingMessengers';
 
 const inter = Inter({
@@ -154,15 +153,26 @@ export default function RootLayout({
 
   return (
     <html lang="uk" className={`${inter.variable} ${montserrat.variable}`}>
-      <Head>
+      <GoogleTagManager gtmId="GTM-5DPCG5D7" />
+      <head>
         <meta
           name="google-site-verification"
           content="6CgpA_BjgUm2xjXolSi_rzuzNtxvT4Xcbm2iE0_FmzY"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-      </Head>
+      </head>
       <GoogleAnalytics gaId="AW-18389090771" />
       <body>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5DPCG5D7"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
