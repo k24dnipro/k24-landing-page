@@ -239,13 +239,6 @@ export default function AIAssistant() {
     setIsOpen((prev) => !prev);
   };
 
-  const handleResetChat = () => {
-    setMessages([INITIAL_MESSAGE]);
-    setSelectedImage(null);
-    setInputValue("");
-    setIsTyping(false);
-  };
-
   const handleQuickReply = (item: (typeof QUICK_REPLIES)[0]) => {
     if (item.action === "photo") {
       fileInputRef.current?.click();
@@ -352,19 +345,19 @@ export default function AIAssistant() {
 
         const userContent = currentImg
           ? [
-              {
-                type: "text",
-                text:
-                  text ||
-                  "Оцініть пошкодження кузова на цьому фото, необхідні роботи (рихтування / фарбування) та орієнтовну вартість.",
+            {
+              type: "text",
+              text:
+                text ||
+                "Оцініть пошкодження кузова на цьому фото, необхідні роботи (рихтування / фарбування) та орієнтовну вартість.",
+            },
+            {
+              type: "image_url",
+              image_url: {
+                url: currentImg,
               },
-              {
-                type: "image_url",
-                image_url: {
-                  url: currentImg,
-                },
-              },
-            ]
+            },
+          ]
           : text;
 
         conversationHistory.push({
