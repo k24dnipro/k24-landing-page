@@ -6,6 +6,7 @@ import {
 } from 'next/font/google';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import FloatingMessengers from '@/components/FloatingMessengers/FloatingMessengers';
+import AIAssistant from '@/components/AIAssistant/AIAssistant';
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -189,6 +190,7 @@ export default function RootLayout({
         />
         {children}
         <FloatingMessengers />
+        <AIAssistant />
       </body>
     </html>
   );
